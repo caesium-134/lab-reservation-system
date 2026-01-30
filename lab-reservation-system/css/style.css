@@ -6,6 +6,7 @@ body {
 	margin: 0; 
 	font-family: Garamond;
 	background-image: url("background.png");
+	background-size: cover;
 	background-repeat: no-repeat;
   	background-position: right top;
   	background-attachment: scroll;
