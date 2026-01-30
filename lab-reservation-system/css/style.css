@@ -1,4 +1,6 @@
-*{ box-sizing: border-box; }
+*{
+	box-sizing: border-box;
+}
 
 body {
 	margin: 0; 
@@ -67,12 +69,13 @@ body {
   }
 }
 
+/* Sign-in box */ 
 div.box{
 	margin: 30px;
 	background-color: white;
 	border-radius: 10px; 
 	width: 28vw;
-	height: 30vw;
+	height: 37vw;
 	margin: auto;
 	padding-top: 20px;
 	float: center; 
@@ -87,7 +90,7 @@ div.box h1{
 }
 
 input[type=text], input[type=password]{
-	height: 20%;
+	height: 50px;
 	padding: 10px;
 	width: 100%;
 	border-radius: 5px;
@@ -100,6 +103,7 @@ input[type=text], input[type=password]{
 	justify-content: center;
 }
 
+/* Log-in button*/
 .btn{
 	color: white;
 	padding: 12px 24px;
@@ -114,3 +118,19 @@ input[type=text], input[type=password]{
     transition: all 0.3s;  
 	width: 304px; 
 } 
+	
+.demo-credentials {
+	padding: 1px 20px 20px 20px; 
+	background: #f3f4f6;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.demo-credentials h4 {
+    margin-bottom: 8px;
+    color: #667eea;
+}
+
+.demo-credentials p {
+    margin: 5px 0;
+}
