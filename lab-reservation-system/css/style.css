@@ -466,4 +466,40 @@ body {
     border-bottom: 2px solid #e5e7eb;
 }
 
+/* Register Page */
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 25px;
+    height: 500px;
+    width: 700px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+}
+
+.register-submit-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: darkblue;
+    color: white;
+    padding: 15px;
+    width: 100%; 
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.register-text-field {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%; 
+    font-size: 18px;
+    margin: 5px;
+}
+
 
