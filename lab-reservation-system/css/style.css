@@ -1,13 +1,20 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     margin: 0;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    overflow: hidden;
 }
 
 /* Login Page */
@@ -33,7 +40,7 @@ body {
     flex-direction: column;
     align-items: left;
     padding: 25px;
-    height: 50%;
+    height: 50vh;
     width: 18%;
     border: none;
     border-radius: 10px;
@@ -146,9 +153,10 @@ body {
 
 .content {
     display: flex;
+    flex: 1;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    overflow: hidden;
 }
 
 .sidebar {
@@ -156,6 +164,7 @@ body {
     flex-direction: column;
     width: 9%;
     height: 100%;
+    border-right: 1px solid lightgrey;
 }
 
 .main-content {
@@ -175,11 +184,182 @@ body {
     margin-left: 5px;
 }
 
-.main-content{
+
+.nav {
+    padding: 20px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+#dashboard-nav {
     background: lightgrey;
 }
 
-.nav{
+.nav:hover {
+    background-color: lightgrey;
+}
+
+/*  Dashboard Page */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+
+.dashboard-header {
+    width: 100%;
+    height: 10%;
     padding: 20px;
+    font-size: 38px;
+    font-weight: bold;
+    border-bottom: 1px solid lightgrey;
+}
+
+.dashboard-search-user {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+    padding: 20px;
+    background: lightgrey;
+}
+
+.search-user {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 0;
+}
+
+.dashboard-profile img {
+    width: 50px;
+    border-radius: 100%;
+}
+
+.dashboard-profile span {
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+.dashboard-top-row, .dashboard-bottom-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;;
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+}
+
+.dashboard-col {
+    height: 100%;
+    border-right: 1px solid lightgrey;
+}
+
+#d-left {
+    width: 30%;
+}
+
+#d-right {
+    width: 70%;
+}
+
+#profile-header{
+    width: 100%;
+    height: 25%;
+    object-fit: cover;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 20%;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.user-pfp{
+    height: 100%;
+}
+
+.pd-text p, a{
+    margin: 0;
     font-size: 14px;
+}
+
+.pd-text a{
+    color: grey;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-left: 10px;
+}
+
+#profile-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.user-bio {
+    padding: 20px;
+    height: 30%;
+}
+
+.user-bio p{
+    margin: 0;
+}
+
+.dashboard-options {
+    height: 100%;
+    display: flex;
+}
+
+.do-box {
+    flex: 1;
+    margin: 20px;
+    border: 1px solid lightgrey;
+    flex-direction: column;
+    display: flex;
+}
+
+.do-box-header {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.do-box *{
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+
+.do-box-btn {
+    width: 100%;
+    height: 10%;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.dashboard-nav {
+    padding: 15px;
+    width: 100%;
+    font-size: 15px;
+    background: blue;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
 }
