@@ -1,5 +1,3 @@
-<!-- WIP: natt -->
-
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -13,8 +11,7 @@
         <h1>Lab Seat Reservation</h1>
         <div class="nav-right">
             <a href="dashboard.html" class="btn-secondary">Back to Dashboard</a>
-            <!-- implement logout function in js/auth -->
-            <button onclick="logout()" class="btn-secondary">Logout</button>
+             <button class="btn-secondary">Logout</button>
         </div> 
     </nav>
 
@@ -23,16 +20,14 @@
             <h2>Reserve a Seat</h2>
 
             <div class="week-selector">
-                <!-- implement changeweek function in js/dashboard --> 
-                <button onclick="changeWeek(-1)" class="btn-secondary">Previous Week</button>
+                <button class="btn-secondary">Previous Week</button>
                 <span id="week-display"></span>
-                <button onclick="changeWeek(1)" class="btn-secondary">Next Week</button>
+                <button class="btn-secondary">Next Week</button>
             </div>
 
             <div class="filter-section">
                 <label>Filter by Day:</label>
-                <!-- implement filterReservations in js/reservations -->
-                <select id="day-filter" onchange="filterReservations()">
+                <select id="day-filter">
                     <option value="all">All</option>
                     <option value="Mon">Monday</option>
                     <option value="Tues">Tuesday</option>
@@ -43,17 +38,26 @@
                 </select>
             </div>
 
-            <div id="reservation-calendar"></div>
-
-            <div id="booking-modal" class="modal" style="display:none;">
-                <div class="modal-content"> 
-                    <h3>Make Reservation</h3>
-                    <div id="booking-details"></div>
-                    <!-- implement confirmBooking() and closeModal() in js/reservations -->
-                    <button onclick="confirmBooking()" class="btn-primary">Confirm</button>
-                    <button onclick="closeModal()" class="btn-secondary">Cancel</button>
+            <div id="reservation-calendar">
+                <!-- Hardcoded Date: Monday - February 10, 2026 -->
+                <div class="day-schedule">
+                    <span class="day-name">Monday</span>
+                    <span class="day-date">February 10, 2026</span>
+                </div>
+                <div class="timeslot">
+                    <div class="timeslot-row">
+                        <span class="timeslot-time">
+                            12:00 - 13:00
+                        </span>
+                    </div>
+                    <div class="seat-grid">
+                        <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                        <label for="monday-am-s1" class="seat-slot seat-available">Seat 1</label>
+                        <span class="seat-slot seat-occupied">Seat 2</span>
+                    </div>
                 </div>
             </div>
+ 
         </div>
     </div>
 </body>

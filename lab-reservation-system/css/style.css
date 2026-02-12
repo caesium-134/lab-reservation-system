@@ -290,6 +290,9 @@ body {
 
 .user-pfp{
     height: 100%;
+    width: 30%;
+    object-fit: cover;
+    border-radius: 100%;
 }
 
 .pd-text p, a{
@@ -364,18 +367,33 @@ body {
     border-radius: 30px;
     font-weight: bold;
 }
+
+.search-user {
+    padding: 10px;
+}
+
+.search-user input{
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 1px solid lightgrey;
+}
+
 /* reservation.html styles*/
 .navbar {
     background: white;
     padding: 15px 30px;
+    height: 60px; 
     border-radius: 10px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    flex-direction: column;
     gap: 15px;
+    position: sticky; 
+    width: 100%; 
 }
 
 .navbar h1 {
@@ -390,7 +408,7 @@ body {
 }
 
 .res-container{
-    max-width: 1200; 
+    max-width: 1200px; 
     margin: 0 auto; 
 }
 
@@ -465,6 +483,113 @@ body {
     padding-bottom: 10px;
     border-bottom: 2px solid #e5e7eb;
 }
+
+.day-name{
+    font-size: 16px; 
+    color: #667eea; 
+    letter-spacing: 2px; 
+}
+
+.day-date{
+    font-size: 14px; 
+    color: #667eea;
+    letter-spacing: 2px;
+}
+
+.timeslot {
+    display: grid;
+    grid-template-columns: 150px 150px 1fr;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f9fafb;
+    border-radius: 8px;
+    align-items: center;
+}
+ 
+.timeslot-row{
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+    margin-bottom: 2px; 
+}
+
+.timeslot-time{
+    font-weight: 600; 
+    font-size: 16px; 
+    color: #059669; 
+}
+.seat-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.seat-slot {
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.seat-available {
+    background: #10b981;
+    color: white;
+}
+
+.seat-available:hover {
+    background: #059669;
+    transform: translateY(-2px); 
+    box-shadow: 0 3px 8px rgba(42, 92, 69, .18); 
+}
+
+.seat-occupied {
+    background: #ef4444;
+    color: white;
+    cursor: not-allowed;
+}
+
+.booking-modal{
+    display: none;
+    position: fixed;
+    inset: 0; 
+    background: rgba(28, 28, 30, 0.6);
+    backdrop-filter: blur(4px); 
+    z-index: 200; 
+    align-items: center;
+}
+
+.modal-card{
+    background: white; 
+    border-top: 4px solid gold; 
+    border-radius: 8px; 
+    width: 100%;
+    max-width: 400px; 
+    padding: 32px; 
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    position: relative; 
+}
+
+.modal-title{
+    font-size: 16px; 
+    font-size: 18px; 
+    margin-bottom: 14px;
+    color: red;    
+}
+
+.modal-row{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 5px 0; 
+    border-bottom: 1px solid black; 
+    font-size: 12px;     
+}
+
+.seat-cb {display: none} 
+.seat-cb ~ .booking-modal {display: flex; }
 
 /* Register Page */
 
