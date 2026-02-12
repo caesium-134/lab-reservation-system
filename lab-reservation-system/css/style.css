@@ -423,6 +423,12 @@ body {
 }
 
 /* reservation.html styles*/
+input[type="checkbox"],
+input[type="radio"] { display: none; }
+
+.container{
+    width: 100%;
+}
 .navbar {
     background: white;
     padding: 15px 30px;
@@ -449,9 +455,14 @@ body {
     align-items: center;
 }
 
-.res-container{
+.reservation-section{
     max-width: 1200px; 
     margin: 0 auto; 
+}
+
+.reservation-section h4{
+    letter-spacing: 2px; 
+    text-align: center; 
 }
 
 .btn-primary,
@@ -526,7 +537,14 @@ body {
     border-bottom: 2px solid #e5e7eb;
 }
 
-
+.day-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 5px 5px; 
+    background: white;
+    border-bottom: 1px solid lightgray;
+}
 .day-name{
     font-size: 16px; 
     color: #667eea; 
@@ -562,11 +580,14 @@ body {
     font-size: 16px; 
     color: #059669; 
 }
+
 .seat-grid {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
+
+.seat-cb { display: none; } 
 
 .seat-slot {
     padding: 8px 16px;
@@ -602,12 +623,12 @@ body {
     backdrop-filter: blur(4px); 
     z-index: 200; 
     align-items: center;
+    justify-content: center; 
 }
 
 .modal-card{
     background: white; 
-    border-top: 4px solid gold; 
-    border-radius: 8px; 
+    border-radius: 3px; 
     width: 100%;
     max-width: 400px; 
     padding: 32px; 
@@ -619,7 +640,8 @@ body {
     font-size: 16px; 
     font-size: 18px; 
     margin-bottom: 14px;
-    color: red;    
+    color: navy;
+    font-weight: 600;     
 }
 
 .modal-row{
@@ -628,47 +650,49 @@ body {
     align-items: center; 
     padding: 5px 0; 
     border-bottom: 1px solid black; 
-    font-size: 12px;     
+    font-size: 14px;
+    letter-spacing: 2px;      
 }
 
-.seat-cb {display: none} 
-.seat-cb ~ .booking-modal {display: flex; }
-
-/* Register Page */
-
-.register-container {
+.modal-actions{
     display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding: 25px;
-    height: 500px;
-    width: 700px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    margin: 20px;
+    gap: 5px; 
+    margin-top: 5px;
 }
 
-.register-submit-btn {
-    border: none;
-    border-radius: 30px;
-    background-color: rgb(2, 2, 224);
-    color: white;
-    padding: 15px;
-    width: 100%; 
-    font-size: 18px;
-    margin-top: 20px;
-    margin-left: 5px;
+.btn-close-modal{
+    flex: 1;
+    text-align: center;
+    padding: 5px; 
+    border-radius: 4px; 
+    background: whitesmoke; 
+    border: 1px solid lightcyan; 
+    color: darkred; 
+    font-size: 14px; 
+    cursor: pointer; 
+    user-select: none; 
+    font-weight: 600; 
 }
 
-.register-text-field {
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 15px;
-    width: 100%; 
-    font-size: 18px;
-    margin: 5px;
+.btn-close-modal:hover{background: lightgray;}
+
+.btn-confirm{
+    flex: 1; 
+    text-align: center; 
+    padding: 5px; 
+    border-radius: 4px; 
+    font-size: 14px;
+    background: whitesmoke; 
+    color: darkgreen; 
+    cursor: pointer; 
+    user-select: none; 
+    text-decoration: none; 
+    font-weight: 600;  
 }
+
+.btn-confirm:hover {background: lightgray;}
+
+.seat-cb:checked ~ .booking-modal { display: flex; }
 
 
 /* View Reservations */
