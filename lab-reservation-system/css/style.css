@@ -15,6 +15,7 @@ body {
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
     overflow: hidden;
+    align-items: center;
 }
 
 /* Login Page */
@@ -363,3 +364,106 @@ body {
     border-radius: 30px;
     font-weight: bold;
 }
+/* reservation.html styles*/
+.navbar {
+    background: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex-direction: column;
+    gap: 15px;
+}
+
+.navbar h1 {
+    color: black;
+    font-size: 24px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.res-container{
+    max-width: 1200; 
+    margin: 0 auto; 
+}
+
+.btn-primary,
+.btn-secondary{
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.btn-primary{
+    background: #667eea;
+    color: white;
+    width: 100%;
+}
+
+.btn-secondary{
+    background: #6b7280;
+    color: white; 
+}
+
+.btn-secondary:hover {
+    background: #4b5563;
+}
+
+.week-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+}
+
+.filter-section {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}   
+
+.filter-section select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 2px solid #e5e7eb;
+    margin-left: 10px;
+}
+
+.reservation-calendar {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.day-schedule {
+    margin-bottom: 30px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.day-schedule h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+
