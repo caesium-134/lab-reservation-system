@@ -1,5 +1,3 @@
-<!-- WIP: natt -->
-
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -40,16 +38,26 @@
                 </select>
             </div>
 
-            <div id="reservation-calendar"></div>
-
-            <div id="booking-modal" class="modal" style="display:none;">
-                <div class="modal-content"> 
-                    <h3>Make Reservation</h3>
-                    <div id="booking-details"></div>
-                    <button class="btn-primary">Confirm</button>
-                    <button class="btn-secondary">Cancel</button>
+            <div id="reservation-calendar">
+                <!-- Hardcoded Date: Monday - February 10, 2026 -->
+                <div class="day-schedule">
+                    <span class="day-name">Monday</span>
+                    <span class="day-date">February 10, 2026</span>
+                </div>
+                <div class="timeslot">
+                    <div class="timeslot-row">
+                        <span class="timeslot-time">
+                            12:00 - 13:00
+                        </span>
+                    </div>
+                    <div class="seat-grid">
+                        <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                        <label for="monday-am-s1" class="seat-slot seat-available">Seat 1</label>
+                        <span class="seat-slot seat-occupied">Seat 2</span>
+                    </div>
                 </div>
             </div>
+ 
         </div>
     </div>
 </body>
