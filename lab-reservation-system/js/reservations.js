@@ -1,6 +1,5 @@
 // handle all reservation functions 
-// handle all reservation functions 
-let currentWeekOffset = 0; // this week 
+ let currentWeekOffset = 0; // this week 
 let selectedSeat = null; 
 
 window.addEventListener('load', () => {
