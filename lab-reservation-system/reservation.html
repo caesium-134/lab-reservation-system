@@ -1,0 +1,35 @@
+<!-- WIP - natt -->
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width", initial-scale="1.0"> 
+    <title>Lab Reservation</title>
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body> 
+    <nav class="navbar">
+        <h1>Lab Seat Reservation</h1>
+        <div class="nav-right">
+            <a href="dashboard.html" class="btn-secondary">Back to Dashboard</a>
+            <!-- implement logout function in js/auth -->
+            <button onclick="logout()" class="btn-secondary">Logout</button>
+        </div> 
+    </nav>
+
+    <div class="container">
+        <div class="reservation-section">
+            <h2>Reserve a Seat</h2>
+
+            <div class="week-selector">
+                <!-- implement changeweek function in js/dashboard --> 
+                <button onclick="changeWeek(-1)" class="btn-secondary">Previous Week</button>
+                <span id="week-display"></span>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</html> 
