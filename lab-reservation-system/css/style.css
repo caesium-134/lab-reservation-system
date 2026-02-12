@@ -295,14 +295,40 @@ body {
     border-radius: 100%;
 }
 
-.pd-text p, a{
+.pd-text p, 
+.pd-text a{
     margin: 0;
     font-size: 14px;
+    padding: 0;
 }
 
 .pd-text a{
     color: grey;
 }
+
+#ou-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.other-user-box {
+    display: flex;
+    justify-content: top;
+}
+
+.other-user-box .pd-text {
+    padding: 0;
+}
+
+.other-user-box .pd-text p{
+    font-size: 22px;
+}
+
+.other-user-box .profile-details {
+    padding: 0;
+    margin-bottom: auto;
+}
+
 
 .profile-details {
     display: flex;
@@ -378,6 +404,22 @@ body {
     font-size: 16px;
     border-radius: 30px;
     border: 1px solid lightgrey;
+}
+
+.other-user-box {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    height: 10%;
+    width: 100%;
+}
+
+.ou-pfp {
+    border-radius: 100%;
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+    padding: 0;
 }
 
 /* reservation.html styles*/
@@ -481,6 +523,8 @@ body {
     padding-bottom: 10px;
     border-bottom: 2px solid #e5e7eb;
 }
+
+
 
 /* Register Page */
 
