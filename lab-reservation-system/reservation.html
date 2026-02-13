@@ -1,3 +1,5 @@
+<!-- WIP: natt -->
+
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -7,13 +9,28 @@
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body> 
-    <nav class="navbar">
-        <h1>Lab Seat Reservation</h1>
-        <div class="nav-right">
-            <a href="dashboard.html" class="btn-secondary">Back to Dashboard</a>
-             <button class="btn-secondary">Logout</button>
-        </div> 
-    </nav>
+    <div class = "header">
+            <div class = "header-left">
+                Lab Reservation System
+            </div>
+
+            <div class = "header-right">
+                <div class = "username">
+                    miguel
+                </div>
+                <img src = "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3407.jpg?w=360">
+                <div class = "logout">
+                    Logout
+                    <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class = "content">
+            <div class = "sidebar">
+                <div class = "nav">Dashboard</div>
+                <div class = "nav">Laboratories</div>
+                <div class = "nav" id="Reservations">Reservations</div>
+            </div>
 
     <div class="container">
         <div class="reservation-section">
@@ -71,7 +88,7 @@
                         </div>
                     </div>
 
-                    <span class="seat-slot seat-occupied">Seat 02</span>
+                    <span class="seat-slot seat-occupied"> Alex R. </span>
 
                     <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
                     <label for="monday-am-s1" class="seat-slot seat-available">Seat 03</label>
@@ -109,15 +126,15 @@
                     </div>
                       
                 <div style="padding-left: 50px"></div>
-                    <span class="seat-slot seat-occupied">Seat 05</span>
+                    <span class="seat-slot seat-occupied">Gwen T.</span>
                     <span class="seat-slot seat-occupied">Seat 06</span>
                     <span class="seat-slot seat-occupied">Seat 07</span>
                     <span class="seat-slot seat-occupied">Seat 08</span>
                 <div style="padding-left: 50px"></div>
                     <span class="seat-slot seat-occupied">Seat 09</span>
-                    <span class="seat-slot seat-occupied">Seat 10</span>
+                    <span class="seat-slot seat-occupied">Cole P.</span>
                     <span class="seat-slot seat-occupied">Seat 11</span>
-                    <span class="seat-slot seat-occupied">Seat 12</span>
+                    <span class="seat-slot seat-occupied">Sevy J.</span>
                 <div style="padding-left: 10px"></div>
                     <span class="seat-slot seat-occupied">Seat 13</span>
                     <span class="seat-slot seat-occupied">Seat 14</span>
@@ -147,10 +164,11 @@
                     <span class="seat-slot seat-occupied">Seat 33</span>
                     <span class="seat-slot seat-occupied">Seat 34</span>
                     <span class="seat-slot seat-occupied">Seat 35</span>
-                    <span class="seat-slot seat-occupied">Seat 36</span>    
+                    <span class="seat-slot seat-occupied">Seat 36</span>
+                  
             </div>
+ 
         </div>
     </div>
 </body>
 </html>
-
