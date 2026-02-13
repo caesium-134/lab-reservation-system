@@ -635,7 +635,7 @@ input[type="radio"] { display: none; }
 }
 
 .seat-occupied {
-    background: #ef4444;
+    background: slategrey;
     color: white;
     cursor: not-allowed;
 }
