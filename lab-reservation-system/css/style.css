@@ -347,6 +347,19 @@ body {
 .ou-bio {
     display: none;
 }
+
+.ou-course {
+    display: none;
+}
+
+.ou-year {
+    display: none;
+}
+
+.ou-college {
+    display: none;
+}
+
 .modal-bottom{
     display: flex;
     flex-direction: row;
@@ -410,7 +423,7 @@ body {
 
 .user-bio {
     padding: 20px;
-    height: 30%;
+    height: 20%;
 }
 
 .ou-header {

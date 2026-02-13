@@ -99,6 +99,9 @@
                                             <div class = "pd-text">
                                                 <p class = "ou-name">Joaquin Valerio</p>
                                                 <p class = "ou-bio">What's up! I'm Joaquin. Im a Legal Management major studying in the University of Santo Tomas.</p>
+                                                <p class = "ou-course">Legal Management</p>
+                                                <p class = "ou-year">1st Year</p>
+                                                <p class = "ou-college">College of Liberal Arts</p>
                                             </div>
                                         </div>
                                 </div>
@@ -110,6 +113,9 @@
                                             <div class = "pd-text">
                                                 <p class = "ou-name">Seancarlo Grino</p>
                                                 <p class = "ou-bio">Hello! My name is Sean. I am currently studying at Mapua Makati taking up Data Science.</p>
+                                                <p class = "ou-course">Data Science</p>
+                                                <p class = "ou-year">3rd Year</p>
+                                                <p class = "ou-college">College of Science</p>
                                             </div>
                                         </div>
                                 </div>
@@ -121,6 +127,9 @@
                                             <div class = "pd-text">
                                                 <p class = "ou-name">Daniel Penalotha</p>
                                                 <p class = "ou-bio">Good day everyone! I'm Daniel and I am studying Information Technology in De La Salle University (DLSU)</p>
+                                                <p class = "ou-course">Information Technology</p>
+                                                <p class = "ou-year">2nd Year</p>
+                                                <p class = "ou-college">College of Computer Studies</p>
                                             </div>
                                         </div>
                                 </div>
@@ -148,7 +157,10 @@
                         <img id = "modal-pfp" src="">
                         <h5 id = "modal-name"></h5>
                         <p id = "modal-email"></p>
-                        <p>Teacher</p>
+                        <p>Student</p>
+                        <p id = "modal-college"></p>
+                        <p id = "modal-course"></p>
+                        <p id = "modal-year"></p>
                     </div>
                     <div id = "modal-other">
                         <p id = "modal-bio"></p>
@@ -174,12 +186,18 @@
             const header = this.querySelector(".ou-header").src;
             const email = this.querySelector(".ou-email").innerText;
             const bio = this.querySelector(".ou-bio").innerText;
+            const college = this.querySelector(".ou-college").innerText;
+            const course = this.querySelector(".ou-course").innerText;
+            const year = this.querySelector(".ou-year").innerText;
 
             document.getElementById("modal-name").innerText = name;
             document.getElementById("modal-pfp").src = pfp;
             document.getElementById("modal-email").innerText = email;
             document.getElementById("modal-img-header").src = header;
             document.getElementById("modal-bio").innerText = bio;
+            document.getElementById("modal-college").innerText = college;
+            document.getElementById("modal-course").innerText = course;
+            document.getElementById("modal-year").innerText = year;
 
             modal.show();
         });
