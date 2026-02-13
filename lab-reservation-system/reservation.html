@@ -1,5 +1,3 @@
-<!-- WIP: natt -->
-
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -27,7 +25,7 @@
         </div>
         <div class = "content">
             <div class = "sidebar">
-                <div class = "nav">Dashboard</div>
+                <div class = "nav"><a href="dashboard.html">Dashboard</a></div>
                 <div class = "nav">Laboratories</div>
                 <div class = "nav" id="Reservations">Reservations</div>
             </div>
@@ -35,7 +33,7 @@
     <div class="container">
         <div class="reservation-section">
             <h2>Seat Reservations</h2>
-            <h4>Feb 10 - Feb 16</h4>
+            <div class="week-head"><h4>Feb 10 - Feb 16</h4></div>
             <div class="week-selector">
                 <button class="btn-secondary">Previous Week</button>
                 <span id="week-display"></span>
@@ -57,117 +55,322 @@
 
             <div id="reservation-calendar">
                 <!-- Hardcoded Date: Monday - February 10, 2026 -->
-                <div class="day-schedule day-monday">
+                <div class="day-schedule">
                     <div class="day-head">
                         <span class="day-name">Monday</span>
                         <span class="day-date">February 10, 2026</span>
                     </div>
-                </div>
-
+                
                 <div class="timeslot">
                     <div class="timeslot-row">
-                        <span class="timeslot-time">12:00 - 13:00</span>
+                        <span class="timeslot-time">Time: 7:30 - 9:00</span>
                     </div>
                 </div>
                 <div class="seat-grid">
-                    <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
-                    <label for="monday-am-s1" class="seat-slot seat-available">Seat 01</label>
-                    <div class="booking-modal"> 
-                        <div class="modal-card">
-                            <div class="modal-title">Confirm Reservation</div>
-                            <dl>
-                                <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
-                                <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
-                                <div class="modal-row"><dt>Seat</dt><dd>1</dd></div>
-                                <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
-                            </dl>
-                            <div class="modal-actions">
-                                <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
-                                <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                    <div class="seat-section"> 
+                            <div class="seat-section-label">Section A</div>
+                            <div class="seat-section-grid"> 
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 01</label>
+                                <div class="booking-modal"> 
+                                    <div class="modal-card">
+                                        <div class="modal-title">Confirm Reservation</div>
+                                        <dl>
+                                            <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                            <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                            <div class="modal-row"><dt>Seat</dt><dd>1</dd></div>
+                                            <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                        </dl>
+                                        <div class="modal-actions">
+                                            <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                            <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="seat-slot seat-occupied"> Alex R. </span>
+
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 03</label>
+                            <div class="booking-modal"> 
+                                <div class="modal-card">
+                                    <div class="modal-title">Confirm Reservation</div>
+                                    <dl>
+                                        <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                        <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                        <div class="modal-row"><dt>Seat</dt><dd>3</dd></div>
+                                        <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                    </dl>
+                                    <div class="modal-actions">
+                                        <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                        <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                    </div>
+                                </div>
                             </div>
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 04</label>
+                            <div class="booking-modal"> 
+                                <div class="modal-card">
+                                    <div class="modal-title">Confirm Reservation</div>
+                                    <dl>
+                                        <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                        <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                        <div class="modal-row"><dt>Seat</dt><dd>4</dd></div>
+                                        <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                    </dl>
+                                    <div class="modal-actions">
+                                        <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                        <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <span class="seat-slot seat-occupied">Gwen T.</span>
+                            <span class="seat-slot seat-occupied">Seat 06</span>
+                            <span class="seat-slot seat-occupied">Seat 07</span>
+                            <span class="seat-slot seat-occupied">Seat 08</span>
+                            <span class="seat-slot seat-occupied">Seat 09</span>
+                        </div>
+                    </div>
+                    <div class="seat-section"> 
+                        <div class="seat-section-label">Section B</div>
+                        <div class="seat-section-grid"> 
+                            <span class="seat-slot seat-occupied">Cole P.</span>
+                            <span class="seat-slot seat-occupied">Seat 11</span>
+                            <span class="seat-slot seat-occupied">Sevy J.</span>
+                            <span class="seat-slot seat-occupied">Seat 13</span>
+                            <span class="seat-slot seat-occupied">Seat 14</span>
+                            <span class="seat-slot seat-occupied">Seat 15</span>
+                            <span class="seat-slot seat-occupied">Seat 16</span>
+                            <span class="seat-slot seat-occupied">Seat 17</span>
+                            <span class="seat-slot seat-occupied">Seat 18</span>
                         </div>
                     </div>
 
-                    <span class="seat-slot seat-occupied"> Alex R. </span>
+                    <div class="seat-section"> 
+                        <div class="seat-section-label">Section C</div>
+                        <div class="seat-section-grid"> 
+                            <span class="seat-slot seat-occupied">Seat 19</span>
+                            <span class="seat-slot seat-occupied">Seat 20</span>
+                            <span class="seat-slot seat-occupied">Seat 21</span>
+                            <span class="seat-slot seat-occupied">Seat 22</span>
+                            <span class="seat-slot seat-occupied">Seat 23</span>
+                            <span class="seat-slot seat-occupied">Seat 24</span>
+                            <span class="seat-slot seat-occupied">Seat 25</span>
+                            <span class="seat-slot seat-occupied">Seat 26</span>
+                            <span class="seat-slot seat-occupied">Seat 27</span>
+                        </div>
+                    </div>    
+                </div>
+         
+                <div class="timeslot">
+                    <div class="timeslot-row">
+                        <span class="timeslot-time">Time: 9:15 - 10:45</span>
+                    </div>
+                </div>
+                <div class="seat-grid">
+                    <div class="seat-section"> 
+                            <div class="seat-section-label">Section A</div>
+                            <div class="seat-section-grid"> 
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 01</label>
+                                <div class="booking-modal"> 
+                                    <div class="modal-card">
+                                        <div class="modal-title">Confirm Reservation</div>
+                                        <dl>
+                                            <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                            <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                            <div class="modal-row"><dt>Seat</dt><dd>1</dd></div>
+                                            <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                        </dl>
+                                        <div class="modal-actions">
+                                            <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                            <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
-                    <label for="monday-am-s1" class="seat-slot seat-available">Seat 03</label>
-                    <div class="booking-modal"> 
-                        <div class="modal-card">
-                            <div class="modal-title">Confirm Reservation</div>
-                            <dl>
-                                <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
-                                <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
-                                <div class="modal-row"><dt>Seat</dt><dd>3</dd></div>
-                                <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
-                            </dl>
-                            <div class="modal-actions">
-                                <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
-                                <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                <span class="seat-slot seat-occupied"> Alex R. </span>
+
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 03</label>
+                            <div class="booking-modal"> 
+                                <div class="modal-card">
+                                    <div class="modal-title">Confirm Reservation</div>
+                                    <dl>
+                                        <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                        <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                        <div class="modal-row"><dt>Seat</dt><dd>3</dd></div>
+                                        <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                    </dl>
+                                    <div class="modal-actions">
+                                        <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                        <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                    </div>
+                                </div>
                             </div>
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 04</label>
+                            <div class="booking-modal"> 
+                                <div class="modal-card">
+                                    <div class="modal-title">Confirm Reservation</div>
+                                    <dl>
+                                        <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                        <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                        <div class="modal-row"><dt>Seat</dt><dd>4</dd></div>
+                                        <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                    </dl>
+                                    <div class="modal-actions">
+                                        <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                        <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <span class="seat-slot seat-occupied">Gwen T.</span>
+                            <span class="seat-slot seat-occupied">Seat 06</span>
+                            <span class="seat-slot seat-occupied">Seat 07</span>
+                            <span class="seat-slot seat-occupied">Seat 08</span>
+                            <span class="seat-slot seat-occupied">Seat 09</span>
                         </div>
                     </div>
-                    <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
-                    <label for="monday-am-s1" class="seat-slot seat-available">Seat 04</label>
-                    <div class="booking-modal"> 
-                        <div class="modal-card">
-                            <div class="modal-title">Confirm Reservation</div>
-                            <dl>
-                                <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
-                                <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
-                                <div class="modal-row"><dt>Seat</dt><dd>4</dd></div>
-                                <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
-                            </dl>
-                            <div class="modal-actions">
-                                <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
-                                <label for="monday-am-s1" class="btn-confirm">Confirm</label>
-                            </div>
-                        </div>    
+                    <div class="seat-section"> 
+                        <div class="seat-section-label">Section B</div>
+                        <div class="seat-section-grid"> 
+                            <span class="seat-slot seat-occupied">Cole P.</span>
+                            <span class="seat-slot seat-occupied">Seat 11</span>
+                            <span class="seat-slot seat-occupied">Sevy J.</span>
+                            <span class="seat-slot seat-occupied">Seat 13</span>
+                            <span class="seat-slot seat-occupied">Seat 14</span>
+                            <span class="seat-slot seat-occupied">Seat 15</span>
+                            <span class="seat-slot seat-occupied">Seat 16</span>
+                            <span class="seat-slot seat-occupied">Seat 17</span>
+                            <span class="seat-slot seat-occupied">Seat 18</span>
+                        </div>
                     </div>
-                      
-                <div style="padding-left: 50px"></div>
-                    <span class="seat-slot seat-occupied">Gwen T.</span>
-                    <span class="seat-slot seat-occupied">Seat 06</span>
-                    <span class="seat-slot seat-occupied">Seat 07</span>
-                    <span class="seat-slot seat-occupied">Seat 08</span>
-                <div style="padding-left: 50px"></div>
-                    <span class="seat-slot seat-occupied">Seat 09</span>
-                    <span class="seat-slot seat-occupied">Cole P.</span>
-                    <span class="seat-slot seat-occupied">Seat 11</span>
-                    <span class="seat-slot seat-occupied">Sevy J.</span>
-                <div style="padding-left: 10px"></div>
-                    <span class="seat-slot seat-occupied">Seat 13</span>
-                    <span class="seat-slot seat-occupied">Seat 14</span>
-                    <span class="seat-slot seat-occupied">Seat 15</span>
-                    <span class="seat-slot seat-occupied">Seat 16</span>
-               <div style="padding-left: 50px"></div>
-                    <span class="seat-slot seat-occupied">Seat 17</span>
-                    <span class="seat-slot seat-occupied">Seat 18</span>
-                    <span class="seat-slot seat-occupied">Seat 19</span>
-                    <span class="seat-slot seat-occupied">Seat 20</span>
-                <div style="padding-left: 50px"></div>
-                    <span class="seat-slot seat-occupied">Seat 21</span>
-                    <span class="seat-slot seat-occupied">Seat 22</span>
-                    <span class="seat-slot seat-occupied">Seat 23</span>
-                    <span class="seat-slot seat-occupied">Seat 24</span>
-                <div style="padding-left: 10px"></div>
-                    <span class="seat-slot seat-occupied">Seat 25</span>
-                    <span class="seat-slot seat-occupied">Seat 26</span>
-                    <span class="seat-slot seat-occupied">Seat 27</span>
-                    <span class="seat-slot seat-occupied">Seat 28</span> 
-                <div style="padding-left: 50px"></div>
-                    <span class="seat-slot seat-occupied">Seat 29</span>
-                    <span class="seat-slot seat-occupied">Seat 30</span>
-                    <span class="seat-slot seat-occupied">Seat 31</span>
-                    <span class="seat-slot seat-occupied">Seat 32</span>
-                <div style="padding-left: 50px"></div>
-                    <span class="seat-slot seat-occupied">Seat 33</span>
-                    <span class="seat-slot seat-occupied">Seat 34</span>
-                    <span class="seat-slot seat-occupied">Seat 35</span>
-                    <span class="seat-slot seat-occupied">Seat 36</span>
-                  
+
+                    <div class="seat-section"> 
+                        <div class="seat-section-label">Section C</div>
+                        <div class="seat-section-grid"> 
+                            <span class="seat-slot seat-occupied">Seat 19</span>
+                            <span class="seat-slot seat-occupied">Seat 20</span>
+                            <span class="seat-slot seat-occupied">Seat 21</span>
+                            <span class="seat-slot seat-occupied">Seat 22</span>
+                            <span class="seat-slot seat-occupied">Seat 23</span>
+                            <span class="seat-slot seat-occupied">Seat 24</span>
+                            <span class="seat-slot seat-occupied">Seat 25</span>
+                            <span class="seat-slot seat-occupied">Seat 26</span>
+                            <span class="seat-slot seat-occupied">Seat 27</span>
+                        </div>
+                    </div>
+                    
+                     
+             
+            
+            
+                </div>
+               <div class="timeslot">
+                    <div class="timeslot-row">
+                        <span class="timeslot-time">Time: 11:00 - 12:30</span>
+                    </div>
+                </div>
+                <div class="seat-grid">
+                    <div class="seat-section"> 
+                            <div class="seat-section-label">Section A</div>
+                            <div class="seat-section-grid"> 
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 01</label>
+                                <div class="booking-modal"> 
+                                    <div class="modal-card">
+                                        <div class="modal-title">Confirm Reservation</div>
+                                        <dl>
+                                            <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                            <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                            <div class="modal-row"><dt>Seat</dt><dd>1</dd></div>
+                                            <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                        </dl>
+                                        <div class="modal-actions">
+                                            <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                            <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="seat-slot seat-occupied"> Alex R. </span>
+
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 03</label>
+                            <div class="booking-modal"> 
+                                <div class="modal-card">
+                                    <div class="modal-title">Confirm Reservation</div>
+                                    <dl>
+                                        <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                        <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                        <div class="modal-row"><dt>Seat</dt><dd>3</dd></div>
+                                        <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                    </dl>
+                                    <div class="modal-actions">
+                                        <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                        <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="checkbox" id="monday-am-s1" class="seat-cb"> 
+                            <label for="monday-am-s1" class="seat-slot seat-available">Seat 04</label>
+                            <div class="booking-modal"> 
+                                <div class="modal-card">
+                                    <div class="modal-title">Confirm Reservation</div>
+                                    <dl>
+                                        <div class="modal-row"><dt>Date</dt><dd>February 10, 2026</dd></div>
+                                        <div class="modal-row"><dt>Time</dt><dd>08:00 - 10:00</dd></div>
+                                        <div class="modal-row"><dt>Seat</dt><dd>4</dd></div>
+                                        <div class="modal-row"><dt>Member</dt><dd>Pearson McPerson</dd></div>
+                                    </dl>
+                                    <div class="modal-actions">
+                                        <label for="monday-am-s1" class="btn-close-modal">Cancel</label>
+                                        <label for="monday-am-s1" class="btn-confirm">Confirm</label>
+                                    </div>
+                                </div>    
+                            </div>
+                            
+                            <span class="seat-slot seat-occupied">Gwen T.</span>
+                            <span class="seat-slot seat-occupied">Seat 06</span>
+                            <span class="seat-slot seat-occupied">Seat 07</span>
+                            <span class="seat-slot seat-occupied">Seat 08</span>
+                            <span class="seat-slot seat-occupied">Seat 09</span>
+                        </div>
+                    </div>
+                    <div class="seat-section"> 
+                        <div class="seat-section-label">Section B</div>
+                        <div class="seat-section-grid"> 
+                            <span class="seat-slot seat-occupied">Cole P.</span>
+                            <span class="seat-slot seat-occupied">Seat 11</span>
+                            <span class="seat-slot seat-occupied">Sevy J.</span>
+                            <span class="seat-slot seat-occupied">Seat 13</span>
+                            <span class="seat-slot seat-occupied">Seat 14</span>
+                            <span class="seat-slot seat-occupied">Seat 15</span>
+                            <span class="seat-slot seat-occupied">Seat 16</span>
+                            <span class="seat-slot seat-occupied">Seat 17</span>
+                            <span class="seat-slot seat-occupied">Seat 18</span>
+                        </div>
+                    </div>
+
+                    <div class="seat-section"> 
+                        <div class="seat-section-label">Section C</div>
+                        <div class="seat-section-grid"> 
+                            <span class="seat-slot seat-occupied">Seat 19</span>
+                            <span class="seat-slot seat-occupied">Seat 20</span>
+                            <span class="seat-slot seat-occupied">Seat 21</span>
+                            <span class="seat-slot seat-occupied">Seat 22</span>
+                            <span class="seat-slot seat-occupied">Seat 23</span>
+                            <span class="seat-slot seat-occupied">Seat 24</span>
+                            <span class="seat-slot seat-occupied">Seat 25</span>
+                            <span class="seat-slot seat-occupied">Seat 26</span>
+                            <span class="seat-slot seat-occupied">Seat 27</span>
+                        </div>
+                    </div> 
             </div>
- 
+            </div>
         </div>
     </div>
 </body>
