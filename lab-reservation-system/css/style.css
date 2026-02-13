@@ -719,6 +719,46 @@ input[type="radio"] { display: none; }
 
 .seat-cb:checked ~ .booking-modal { display: flex; }
 
+/* laboratories.html */
+.lab-container{
+    width: 100%; 
+    padding: 20px 10px 10px 30px;
+}
+
+.card-container{
+    display: column; 
+    margin: 0 auto; 
+    height: 500px; 
+    background: whitesmoke; 
+    width: 50%;
+    padding: 10px 10px 10px 30px;
+    border-radius: 9px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    border: 1px solid white;
+}
+
+.card-header{ 
+    font-weight: 600px; 
+    text-align: left; 
+    color: black; 
+    width: 100%;
+    display: column; 
+}
+
+.card-available h5{
+    color: green; 
+}
+
+.card-description{
+    color: black; 
+    text-align: left; 
+    width: 100%;
+}
+
+.card-container img{
+    width: 400px;
+    height: auto;
+}
 
 /* View Reservations */
 
