@@ -30,9 +30,9 @@ body {
 }
 
 .login-header h4{
-    font-weight:300;
-    padding:10px; 
-}
+    font-weight:600;
+    padding:10px;
+ }
 
 .login-content {
     display: flex;
@@ -133,6 +133,7 @@ body {
 .header-left {
     text-align: left;
     font-size: 18px;
+    font-weight: 600;
 }
 
 .header-middle {
