@@ -26,7 +26,13 @@ body {
     display: flex;
     align-items: center;
     border: none;
+    color: blue; 
 }
+
+.login-header h4{
+    font-weight:600;
+    padding:10px;
+ }
 
 .login-content {
     display: flex;
@@ -34,6 +40,7 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
+    background: #f5f2ed; 
 }
 
 .login-container {
@@ -41,11 +48,12 @@ body {
     flex-direction: column;
     align-items: left;
     padding: 25px;
-    height: 52vh;
-    width: 18%;
+    height: 68vh;
+    width: 25%;
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    background: whitesmoke;
 }
 
 .login-container *{
@@ -111,7 +119,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    background: blue;
+    background: rgb(6, 6, 61);
 }
 
 .header-left,
@@ -125,6 +133,7 @@ body {
 .header-left {
     text-align: left;
     font-size: 18px;
+    font-weight: 600;
 }
 
 .header-middle {
@@ -158,6 +167,7 @@ body {
     flex-direction: row;
     width: 100%;
     overflow: auto;
+    background: #f5f2ed; 
 }
 
 .sidebar {
@@ -166,6 +176,7 @@ body {
     width: 9%;
     min-height: 100vw;
     border-right: 1px solid lightgrey;
+    background: #f5f2ed; 
 }
 
 .main-content {
@@ -424,6 +435,8 @@ body {
     border: 1px solid lightgrey;
     flex-direction: column;
     display: flex;
+    background: white; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .do-box-header {
@@ -449,11 +462,16 @@ body {
     padding: 15px;
     width: 100%;
     font-size: 15px;
-    background: blue;
+    background: darkblue;
     color: white;
     border: none;
     border-radius: 30px;
     font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-nav:hover{
+    transform: translateY(-3px)
 }
 
 .dashboard-nav a{
@@ -505,6 +523,7 @@ input[type="radio"] { display: none; }
     border: 1px solid lightgray;
     border-radius: 5px;
     padding: 10px 50px 25px 50px; 
+    background: white;
 }
 
 .reservation-section h4{
@@ -776,6 +795,51 @@ input[type="radio"] { display: none; }
 
 .seat-cb:checked ~ .booking-modal { display: flex; }
 
+/* laboratories.html */
+.lab-container{
+    width: 100%; 
+    padding: 20px 10px 10px 30px;
+}
+
+.card-container{
+    display: column; 
+    margin: 0 auto; 
+    height: 500px; 
+    background: whitesmoke; 
+    width: 50%;
+    padding: 10px 10px 10px 30px;
+    border-radius: 9px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    border: 1px solid white;
+}
+
+.card-container a{
+    text-decoration: none;
+    color: darkblue;
+}
+
+.card-header{ 
+    font-weight: 600px; 
+    text-align: left; 
+    color: black; 
+    width: 100%;
+    display: column; 
+}
+
+.card-available h5{
+    color: green; 
+}
+
+.card-description{
+    color: black; 
+    text-align: left; 
+    width: 100%;
+}
+
+.card-container img{
+    width: 400px;
+    height: auto;
+}
 
 /* View Reservations */
 
@@ -788,6 +852,7 @@ input[type="radio"] { display: none; }
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
+    background: white; 
 }
 
 .view-reservation-table th,
@@ -807,7 +872,7 @@ input[type="radio"] { display: none; }
 .view-add-btn {
     border: none;
     border-radius: 30px;
-    background-color: rgb(2, 2, 224);
+    background-color: darkblue;
     color: white;
     padding: 15px;
     width: 130px;
@@ -819,7 +884,7 @@ input[type="radio"] { display: none; }
 .view-edit-btn {
     border: none;
     border-radius: 30px;
-    background-color: rgb(2, 224, 54);
+    background-color: darkgreen;
     color: white;
     padding: 15px;
     width: 130px;
@@ -831,7 +896,7 @@ input[type="radio"] { display: none; }
 .view-delete-btn {
     border: none;
     border-radius: 30px;
-    background-color: rgb(224, 2, 2);
+    background-color: darkred;
     color: white;
     padding: 15px;
     width: 130px;
