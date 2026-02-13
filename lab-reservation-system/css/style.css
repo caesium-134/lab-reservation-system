@@ -40,6 +40,7 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
+    background: #f5f2ed; 
 }
 
 .login-container {
@@ -52,6 +53,7 @@ body {
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    background: whitesmoke;
 }
 
 .login-container *{
@@ -164,6 +166,7 @@ body {
     flex-direction: row;
     width: 100%;
     overflow: auto;
+    background: #f5f2ed; 
 }
 
 .sidebar {
@@ -172,6 +175,7 @@ body {
     width: 9%;
     min-height: 100vw;
     border-right: 1px solid lightgrey;
+    background: #f5f2ed; 
 }
 
 .main-content {
