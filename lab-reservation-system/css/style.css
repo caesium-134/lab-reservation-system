@@ -9,12 +9,12 @@ html, body {
 
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-    overflow: hidden;
+    overflow: auto;
     align-items: center;
 }
 
@@ -157,14 +157,14 @@ body {
     flex: 1;
     flex-direction: row;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .sidebar {
     display: flex;
     flex-direction: column;
     width: 9%;
-    height: 100%;
+    min-height: 100vw;
     border-right: 1px solid lightgrey;
 }
 
@@ -185,7 +185,10 @@ body {
     margin-left: 5px;
 }
 
-
+.logout a{
+    color: white;
+    text-decoration: none; 
+}
 .nav {
     padding: 20px;
     font-size: 14px;
@@ -200,6 +203,10 @@ body {
     background-color: lightgrey;
 }
 
+.nav a {
+    text-decoration: none;
+    color: black;
+}
 /*  Dashboard Page */
 
 .main-content {
@@ -212,7 +219,8 @@ body {
 .dashboard-header {
     width: 100%;
     height: 10%;
-    padding: 20px;
+    padding-top: 12px;
+    padding-left: 20px;
     font-size: 38px;
     font-weight: bold;
     border-bottom: 1px solid lightgrey;
@@ -383,6 +391,7 @@ body {
     margin-bottom: 25px;
 }
 
+
 .dashboard-nav {
     padding: 15px;
     width: 100%;
@@ -394,6 +403,11 @@ body {
     font-weight: bold;
 }
 
+.dashboard-nav a{
+    color: white; 
+    text-decoration: none;
+}
+ 
 .search-user {
     padding: 10px;
 }
@@ -412,6 +426,7 @@ body {
     padding: 10px;
     height: 10%;
     width: 100%;
+    overflow: hidden;
 }
 
 .ou-pfp {
@@ -423,35 +438,24 @@ body {
 }
 
 /* reservation.html styles*/
-.navbar {
-    background: white;
-    padding: 15px 30px;
-    height: 60px; 
-    border-radius: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    gap: 15px;
-    position: sticky; 
-    width: 100%; 
+input[type="checkbox"],
+input[type="radio"] { display: none; }
+
+.container{
+    width: 100%;
 }
 
-.navbar h1 {
-    color: black;
-    font-size: 24px;
-}
-
-.nav-right {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.res-container{
+.reservation-section{
     max-width: 1200px; 
     margin: 0 auto; 
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px 50px 25px 50px; 
+}
+
+.reservation-section h4{
+    letter-spacing: 2px; 
+    text-align: center; 
 }
 
 .btn-primary,
@@ -492,6 +496,12 @@ body {
     border-radius: 10px;
 }
 
+.week-head{
+    border: 1px solid lightgray; 
+    border-radius: 2px;
+    background: whitesmoke;
+}
+
 .filter-section {
     background: white;
     padding: 15px;
@@ -526,16 +536,23 @@ body {
     border-bottom: 2px solid #e5e7eb;
 }
 
-
+.day-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 10px; 
+    background: white;
+}
 .day-name{
+    font-weight: 600; 
     font-size: 16px; 
-    color: #667eea; 
-    letter-spacing: 2px; 
+    color: black; 
+    letter-spacing: 0.5px; 
 }
 
 .day-date{
     font-size: 14px; 
-    color: #667eea;
+    color: black;
     letter-spacing: 2px;
 }
 
@@ -560,14 +577,43 @@ body {
 .timeslot-time{
     font-weight: 600; 
     font-size: 16px; 
-    color: #059669; 
+    color: black; 
 }
+
 .seat-grid {
     display: flex;
-    gap: 10px;
+    gap: 110px;
     flex-wrap: wrap;
 }
 
+.seat-section{
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+}
+
+.seat-section-label{
+    font-size: 11px; 
+    font-weight: 700; 
+    letter-spacing: 2px;
+    color: black;
+    margin-bottom: 4px;
+}
+
+.seat-section-grid{
+    display: grid; 
+    grid-template-columns: repeat(3, auto);
+    gap: 8px;
+    align-items: start; 
+    padding-bottom: 10px;
+}
+
+.seat-section-grid .seat-cb, .seat-section-grid .booking-modal { display: none; } 
+.seat-section-grid .seat-cb:checked + label + .booking-modal,
+.seat-section-grid .seat-cb:checked ~ .booking-modal {
+    display: flex;
+}
+.seat-cb{display: none;}
 .seat-slot {
     padding: 8px 16px;
     border-radius: 6px;
@@ -589,7 +635,7 @@ body {
 }
 
 .seat-occupied {
-    background: #ef4444;
+    background: slategrey;
     color: white;
     cursor: not-allowed;
 }
@@ -602,12 +648,12 @@ body {
     backdrop-filter: blur(4px); 
     z-index: 200; 
     align-items: center;
+    justify-content: center; 
 }
 
 .modal-card{
     background: white; 
-    border-top: 4px solid gold; 
-    border-radius: 8px; 
+    border-radius: 3px; 
     width: 100%;
     max-width: 400px; 
     padding: 32px; 
@@ -619,7 +665,8 @@ body {
     font-size: 16px; 
     font-size: 18px; 
     margin-bottom: 14px;
-    color: red;    
+    color: navy;
+    font-weight: 600;     
 }
 
 .modal-row{
@@ -628,47 +675,49 @@ body {
     align-items: center; 
     padding: 5px 0; 
     border-bottom: 1px solid black; 
-    font-size: 12px;     
+    font-size: 14px;
+    letter-spacing: 2px;      
 }
 
-.seat-cb {display: none} 
-.seat-cb ~ .booking-modal {display: flex; }
-
-/* Register Page */
-
-.register-container {
+.modal-actions{
     display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding: 25px;
-    height: 500px;
-    width: 700px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    margin: 20px;
+    gap: 5px; 
+    margin-top: 5px;
 }
 
-.register-submit-btn {
-    border: none;
-    border-radius: 30px;
-    background-color: rgb(2, 2, 224);
-    color: white;
-    padding: 15px;
-    width: 100%; 
-    font-size: 18px;
-    margin-top: 20px;
-    margin-left: 5px;
+.btn-close-modal{
+    flex: 1;
+    text-align: center;
+    padding: 5px; 
+    border-radius: 4px; 
+    background: whitesmoke; 
+    border: 1px solid lightcyan; 
+    color: darkred; 
+    font-size: 14px; 
+    cursor: pointer; 
+    user-select: none; 
+    font-weight: 600; 
 }
 
-.register-text-field {
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 15px;
-    width: 100%; 
-    font-size: 18px;
-    margin: 5px;
+.btn-close-modal:hover{background: lightgray;}
+
+.btn-confirm{
+    flex: 1; 
+    text-align: center; 
+    padding: 5px; 
+    border-radius: 4px; 
+    font-size: 14px;
+    background: whitesmoke; 
+    color: darkgreen; 
+    cursor: pointer; 
+    user-select: none; 
+    text-decoration: none; 
+    font-weight: 600;  
 }
+
+.btn-confirm:hover {background: lightgray;}
+
+.seat-cb:checked ~ .booking-modal { display: flex; }
 
 
 /* View Reservations */
@@ -684,7 +733,6 @@ body {
     flex-direction: column;
 }
 
-
 .view-reservation-table th,
 .view-reservation-table td {
   padding: 15px;
@@ -699,14 +747,74 @@ body {
   padding-top: 15px;
 }
 
-.add-btn {
+.view-add-btn {
     border: none;
     border-radius: 30px;
     background-color: rgb(2, 2, 224);
     color: white;
     padding: 15px;
-    width: 200px;
+    width: 130px;
     font-size: 18px;
     margin-top: 20px;
     margin-left: 5px;   
 }
+
+.view-edit-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(2, 224, 54);
+    color: white;
+    padding: 15px;
+    width: 130px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 5px;   
+}
+
+.view-delete-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(224, 2, 2);
+    color: white;
+    padding: 15px;
+    width: 130px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 5px;   
+}
+
+/* Register */
+
+.register-content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 25px;
+    height: 63vh;
+    width: 360px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+}
+
+.register-text-field, .register-submit-btn{
+    padding: 15px;
+    width: 100%; 
+    font-size: 18px;
+}
+
+.register-text-field {
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.register-submit-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: darkblue;
+    color: white;
+    margin-top: 20px;
+}
+
