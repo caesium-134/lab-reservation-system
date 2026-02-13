@@ -14,10 +14,10 @@
 
             <div class = "header-right">
                 <div class = "username">
-                    miguel
+                    Geoffrey Elton
                 </div>
-                <img src = "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3407.jpg?w=360">
-                <div class = "logout">
+                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s">
+                <div id = "logout">
                     Logout
                     <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
                 </div>
@@ -25,9 +25,9 @@
         </div>
         <div class = "dashboard-container">
             <div class = "sidebar">
-                <div class = "nav" id = "dashboard-nav">Dashboard</div>
-                <div class = "nav">Laboratories</div>
-                <div class = "nav">Reservations</div>
+                <div class = "nav" id = "dashboard-nav"><a href="dashboard.html">Dashboard</a></div>
+                <div class = "nav"><a href="laboratories.html">Laboratories</a></div>
+                <div class = "nav"><a href="view-reservations.html">Reservations</a></div>
             </div>
             <div class = "main-content">
                 <div class = "dashboard-header">
@@ -55,6 +55,9 @@
                         </div>
                         <div class = "user-bio">
                             <p>Hi there! My name is Geoffrey and I love to party. I am currently taking up finance and enjoy writing novels.</p>
+                        </div>
+                        <div class = "delete-account">
+                            <button type = "button" class = "delete-account-btn">Delete Account</button>
                         </div>
                     </div>
                     <div class = "dashboard-col" id = "d-right">
@@ -180,5 +183,9 @@
 
             modal.show();
         });
+    });
+
+    document.getElementById("logout").addEventListener("click", function() {
+        window.location.href = "index.html";
     });
 </script>

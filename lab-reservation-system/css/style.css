@@ -153,6 +153,7 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 100%;
+    object-fit: cover;
 }
 
 
@@ -184,16 +185,20 @@ body {
     height: 100%;
 }
 
-.username, .logout{
+.username, #logout{
     justify-content: center;
     text-align: center;
     padding: 5px;
     margin-right: 5px;
 }
 
-.logout{
+#logout{
     margin: 0;
     margin-left: 5px;
+}
+
+#logout:hover {
+    cursor:pointer;
 }
 
 .logout a{
@@ -294,6 +299,8 @@ body {
 
 #d-left {
     width: 30%;
+    display: flex;
+    flex-direction: column;
 }
 
 #d-right {
@@ -457,6 +464,29 @@ body {
     margin-bottom: 25px;
 }
 
+.delete-account {
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    margin-top: auto;
+    margin-bottom: 6%;
+}
+
+.delete-account-btn {
+    padding: 15px;
+    width: 100%;
+    font-size: 15px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.delete-account-btn:hover{
+    transform: translateY(-3px)
+}
 
 .dashboard-nav {
     padding: 15px;
