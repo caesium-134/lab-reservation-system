@@ -117,7 +117,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    background: blue;
+    background: rgb(6, 6, 61);
 }
 
 .header-left,
