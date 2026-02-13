@@ -1,31 +1,53 @@
 <html>
     <head>
         <link href = "css/style.css" rel = "stylesheet" type = "text/css">
-        <title>Lab Reservation System</title>
-        <link rel="icon" type="image/x-icon" href="src/favicon.png">
     </head>
     <body>
-        <div class = "login-header">
-
+        <div class = "login-header header">
+            <div class="header-left"><h3>Lab Reservation System</h3></div>
         </div>
         <div class = "login-content">
             <div class = "login-container">
                 <h1>Sign in</h1>
-                <input type = "text" placeholder = "Username or Email" class = "login-text-field">
-                <input type = "password" placeholder = "Password" class = "login-text-field">
+                <p id="login-error" style="color: red; display: none;">Invalid username or password.</p>
+                <input type = "text" id="username" placeholder = "Username or Email" class = "login-text-field">
+                <input type = "password" id="password" placeholder = "Password" class = "login-text-field">
                 <a href = "index.html">Forgot your password?</a>
                 <div>
                     <input type = "checkbox" class = "remember-me-btn"> Remember Me
                 </div>
-                <button type = "submit" class = "login-submit-btn">Sign in</button>
+                <button type = "submit" class = "login-submit-btn" onclick="login()">Sign in</button>
                 <div class = "login-help-container">
                 <p class = "login-help" id = "register-help">Don't have an account? <a href = "index.html">Register.</a></p>
                 <p class = "login-help" id = "email-help">For inquiries contact support.lrs@gmail.com</p>
                 </div>
             </div>
+
+        <script>
+            const LOGIN = {
+                "student": "student123",
+                "technician": "technician123" 
+            }; 
+
+            function login(){
+                const username = document.getElementById("username").value.trim(); 
+                const password = document.getElementById("password").value; 
+                const error = document.getElementById("login-error"); 
+
+                if(LOGIN[username] && LOGIN[username] === password){
+                    sessionStorage.setItem("logged_in", "true"); 
+                    sessionStorage.setItem("username", username); 
+                    window.location.href = "dashboard.html"; 
+                } else{
+                    error.style.display = "block"; 
+                }
+            }
+
+         </script>
         </div>
         <div class = "login-footer">
-            <p>Lab Reservation System</p><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a>
+            <p>Lab Reservation System</p><a href = "dashboard.html">Dashboard</a><a href = "laboratories.html">Laboratories</a><a href = "reservation.html">Reservations</a> 
         </div>
+
     </body>
 </html>
