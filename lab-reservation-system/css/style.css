@@ -9,12 +9,12 @@ html, body {
 
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-    overflow: hidden;
+    overflow: auto;
     align-items: center;
 }
 
@@ -157,14 +157,14 @@ body {
     flex: 1;
     flex-direction: row;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .sidebar {
     display: flex;
     flex-direction: column;
     width: 9%;
-    height: 100%;
+    min-height: 100vw;
     border-right: 1px solid lightgrey;
 }
 
@@ -444,35 +444,13 @@ input[type="radio"] { display: none; }
 .container{
     width: 100%;
 }
-.navbar {
-    background: white;
-    padding: 15px 30px;
-    height: 60px; 
-    border-radius: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    gap: 15px;
-    position: sticky; 
-    width: 100%; 
-}
-
-.navbar h1 {
-    color: black;
-    font-size: 24px;
-}
-
-.nav-right {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
 
 .reservation-section{
     max-width: 1200px; 
     margin: 0 auto; 
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px 50px 25px 50px; 
 }
 
 .reservation-section h4{
@@ -518,6 +496,12 @@ input[type="radio"] { display: none; }
     border-radius: 10px;
 }
 
+.week-head{
+    border: 1px solid lightgray; 
+    border-radius: 2px;
+    background: whitesmoke;
+}
+
 .filter-section {
     background: white;
     padding: 15px;
@@ -556,19 +540,19 @@ input[type="radio"] { display: none; }
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    padding: 5px 5px; 
+    padding: 10px; 
     background: white;
-    border-bottom: 1px solid lightgray;
 }
 .day-name{
+    font-weight: 600; 
     font-size: 16px; 
-    color: #667eea; 
-    letter-spacing: 2px; 
+    color: black; 
+    letter-spacing: 0.5px; 
 }
 
 .day-date{
     font-size: 14px; 
-    color: #667eea;
+    color: black;
     letter-spacing: 2px;
 }
 
@@ -593,17 +577,43 @@ input[type="radio"] { display: none; }
 .timeslot-time{
     font-weight: 600; 
     font-size: 16px; 
-    color: #059669; 
+    color: black; 
 }
 
 .seat-grid {
     display: flex;
-    gap: 10px;
+    gap: 110px;
     flex-wrap: wrap;
 }
 
-.seat-cb { display: none; } 
+.seat-section{
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+}
 
+.seat-section-label{
+    font-size: 11px; 
+    font-weight: 700; 
+    letter-spacing: 2px;
+    color: black;
+    margin-bottom: 4px;
+}
+
+.seat-section-grid{
+    display: grid; 
+    grid-template-columns: repeat(3, auto);
+    gap: 8px;
+    align-items: start; 
+    padding-bottom: 10px;
+}
+
+.seat-section-grid .seat-cb, .seat-section-grid .booking-modal { display: none; } 
+.seat-section-grid .seat-cb:checked + label + .booking-modal,
+.seat-section-grid .seat-cb:checked ~ .booking-modal {
+    display: flex;
+}
+.seat-cb{display: none;}
 .seat-slot {
     padding: 8px 16px;
     border-radius: 6px;
