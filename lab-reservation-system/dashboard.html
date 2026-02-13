@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href = "css/style.css" rel = "stylesheet" type = "text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
@@ -15,16 +16,16 @@
                 </div>
                 <img src = "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3407.jpg?w=360">
                 <div class = "logout">
-                    <a href="index.html">Logout</a>
+                    Logout
                     <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
                 </div>
             </div>
         </div>
-        <div class = "content">
+        <div class = "dashboard-container">
             <div class = "sidebar">
                 <div class = "nav" id = "dashboard-nav">Dashboard</div>
-                <div class = "nav"><a href="laboratories.html">Laboratories</a></div>
-                <div class = "nav"><a href="reservation.html">Reservations</a></div>
+                <div class = "nav">Laboratories</div>
+                <div class = "nav">Reservations</div>
             </div>
             <div class = "main-content">
                 <div class = "dashboard-header">
@@ -43,7 +44,7 @@
                                     <p>geparty1@gmail.com</p>
                                 </div>
                                 <div class = "pd-text">
-                                    <p>Student</p>
+                                    <p>Teacher</p>
                                 </div>
                                 <div class = "pd-text">
                                     <a href = "#">Edit Profile</a>
@@ -51,7 +52,7 @@
                             </div>
                         </div>
                         <div class = "user-bio">
-                            <p>Hi there! My name is Jeoffrey and I love to party. I am currently taking up finance and enjoy writing novels.</p>
+                            <p>Hi there! My name is Geoffrey and I love to party. I am currently taking up finance and enjoy writing novels.</p>
                         </div>
                     </div>
                     <div class = "dashboard-col" id = "d-right">
@@ -64,7 +65,7 @@
                                     Reserve a laboratory for classes, experiments, or study sessions. Check availability in real time and confirm your booking here.
                                 </div>
                                 <div class = "do-box-btn">
-                                    <button type = "button" class = "dashboard-nav"><a href="reservation.html">Reserve</a></button>
+                                    <button type = "button" class = "dashboard-nav">Reserve</button>
                                 </div>
                             </div>
                             <div class = "do-box">
@@ -75,7 +76,7 @@
                                     View the reservations you have made and easily check booking details, schedules, and reservation status.
                                 </div>
                                 <div class = "do-box-btn">
-                                    <button type = "button" class = "dashboard-nav"><a href="view-reservations.html">View Reservations</a></button>
+                                    <button type = "button" class = "dashboard-nav">View Reservations</button>
                                 </div>
                             </div>
                             <div class = "do-box" id = "ou-box">
@@ -86,66 +87,35 @@
                                     <input type = "textbox" placeholder = "Search User">
                                 </div>
                                 <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
+                                    <img src = "https://i.pinimg.com/1200x/27/88/2d/27882d953c061ee056a90b447f75b00c.jpg" class = "ou-header">
+                                    <p class = "ou-email">jqvaleriotools123@gmail.com</p>
+                                    <img src = "https://i.pinimg.com/474x/e8/4c/6a/e84c6ae72fda88115b7cadc181e1bcbf.jpg" class = "ou-pfp">
                                         <div class = "profile-details">
                                             <div class = "pd-text">
-                                                <p>Geoffrey Elton</p>
+                                                <p class = "ou-name">Joaquin Valerio</p>
+                                                <p class = "ou-bio">What's up! I'm Joaquin. Im a Legal Management major studying in the University of Santo Tomas.</p>
                                             </div>
                                         </div>
                                 </div>
                                 <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
+                                    <img src = "https://i.ytimg.com/vi/g5DYgSaYj8g/maxresdefault.jpg" class = "ou-header">
+                                    <p class = "ou-email">srsgrino@gmail.com</p>
+                                    <img src = "https://i.pinimg.com/736x/b7/0a/08/b70a08eeb2bc008d83e968bd5355d679.jpg" class = "ou-pfp">
                                         <div class = "profile-details">
                                             <div class = "pd-text">
-                                                <p>Seancarlo Grino</p>
+                                                <p class = "ou-name">Seancarlo Grino</p>
+                                                <p class = "ou-bio">Hello! My name is Sean. I am currently studying at Mapua Makati taking up Data Science.</p>
                                             </div>
                                         </div>
                                 </div>
                                 <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
+                                    <img src = "https://i.pinimg.com/736x/11/6c/d0/116cd0e1820004a4d403253c61ecd58f.jpg" class = "ou-header">
+                                    <p class = "ou-email">dpenacoolgame123@gmail.com</p>
+                                    <img src = "https://i.pinimg.com/736x/13/82/ee/1382ee84c851e3328ae2512763e0bd7c.jpg" class = "ou-pfp">
                                         <div class = "profile-details">
                                             <div class = "pd-text">
-                                                <p>Geoffrey Elton</p>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p>Geoffrey Elton</p>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p>Geoffrey Elton</p>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p>Geoffrey Elton</p>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p>Geoffrey Elton</p>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class = "other-user-box">
-                                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p>Geoffrey Elton</p>
+                                                <p class = "ou-name">Daniel Penalotha</p>
+                                                <p class = "ou-bio">Good day everyone! I'm Daniel and I am studying Information Technology in De La Salle University (DLSU)</p>
                                             </div>
                                         </div>
                                 </div>
@@ -155,5 +125,58 @@
                 </div>
             </div>
         </div>
+        <div class = "modal fade" id = "profileModal" tabindex = "-1">
+        <div class = "modal-dialog">
+            <div class = "modal-content">
+
+            <div class = "modal-header">
+                <h5 class = "modal-title">User Profile</h5>
+                <button type = "button" class = "btn-close" data-bs-dismiss = "modal"></button>
+            </div>
+
+            <div class = "modal-body">
+                <div class = "modal-top">
+                    <img id = "modal-img-header" src = "">
+                </div>
+                <div class = "modal-bottom">
+                    <div class = "modal-details">
+                        <img id = "modal-pfp" src="">
+                        <h5 id = "modal-name"></h5>
+                        <p id = "modal-email"></p>
+                        <p>Teacher</p>
+                    </div>
+                    <div id = "modal-other">
+                        <p id = "modal-bio"></p>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
+
+<script>
+    const profiles = document.querySelectorAll(".other-user-box");
+    const modal = new bootstrap.Modal(document.getElementById("profileModal"));
+
+    profiles.forEach(profile => {
+        profile.addEventListener("click", function() {
+            const name = this.querySelector(".ou-name").innerText;
+            const pfp = this.querySelector(".ou-pfp").src;
+            const header = this.querySelector(".ou-header").src;
+            const email = this.querySelector(".ou-email").innerText;
+            const bio = this.querySelector(".ou-bio").innerText;
+
+            document.getElementById("modal-name").innerText = name;
+            document.getElementById("modal-pfp").src = pfp;
+            document.getElementById("modal-email").innerText = email;
+            document.getElementById("modal-img-header").src = header;
+            document.getElementById("modal-bio").innerText = bio;
+
+            modal.show();
+        });
+    });
+</script>

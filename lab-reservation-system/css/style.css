@@ -209,6 +209,14 @@ body {
 }
 /*  Dashboard Page */
 
+.dashboard-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+}
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -301,6 +309,37 @@ body {
     width: 30%;
     object-fit: cover;
     border-radius: 100%;
+    border: 1px solid;
+}
+
+#modal-pfp{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid;
+    border-radius: 100%;
+}
+
+.modal-body {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ou-bio {
+    display: none;
+}
+.modal-bottom{
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-body div{
+    padding: 10px;
+}
+
+.modal-body *{
+    margin: 0;
 }
 
 .pd-text p, 
@@ -316,7 +355,7 @@ body {
 
 #ou-box {
     display: flex;
-    justify-content: space-between;
+    
 }
 
 .other-user-box {
@@ -356,8 +395,22 @@ body {
     height: 30%;
 }
 
+.ou-header {
+    display: none;
+}
+
+.ou-email {
+    display: none;
+}
+
 .user-bio p{
     margin: 0;
+}
+
+#modal-img-header {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .dashboard-options {
@@ -435,6 +488,7 @@ body {
     height: 50px;
     width: 50px;
     padding: 0;
+    border: 1px solid;
 }
 
 /* reservation.html styles*/
@@ -669,6 +723,9 @@ input[type="radio"] { display: none; }
     font-weight: 600;     
 }
 
+.modal-top {
+    height: 30%;
+}
 .modal-row{
     display: flex; 
     justify-content: space-between; 
