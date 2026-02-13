@@ -758,3 +758,39 @@ input[type="radio"] { display: none; }
     margin-top: 20px;
     margin-left: 5px;   
 }
+
+/* Register */
+
+.register-content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 25px;
+    height: 63vh;
+    width: 360px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+}
+
+.register-text-field, .register-submit-btn{
+    padding: 15px;
+    width: 100%; 
+    font-size: 18px;
+}
+
+.register-text-field {
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.register-submit-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: darkblue;
+    color: white;
+    margin-top: 20px;
+}
+
