@@ -747,13 +747,37 @@ input[type="radio"] { display: none; }
   padding-top: 15px;
 }
 
-.add-btn {
+.view-add-btn {
     border: none;
     border-radius: 30px;
     background-color: rgb(2, 2, 224);
     color: white;
     padding: 15px;
-    width: 200px;
+    width: 130px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 5px;   
+}
+
+.view-edit-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(2, 224, 54);
+    color: white;
+    padding: 15px;
+    width: 130px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 5px;   
+}
+
+.view-delete-btn {
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(224, 2, 2);
+    color: white;
+    padding: 15px;
+    width: 130px;
     font-size: 18px;
     margin-top: 20px;
     margin-left: 5px;   
