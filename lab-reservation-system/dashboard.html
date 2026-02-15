@@ -37,7 +37,7 @@
                     <div class = "dashboard-col" id = "d-left">
                         <img src = "https://static.wikia.nocookie.net/spongebob/images/9/9d/Man_Ray_Returns_001.png/revision/latest/scale-to-width-down/1200?cb=20171001162510" id = "profile-header">
                         <div class = "user-profile">
-                            <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "user-pfp">
+                            <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "user-pfp" id="dashboard-pfp">
                             <div class = "profile-details">
                                 <div class = "pd-text">
                                     <p id = "profile-name">Geoffrey Elton</p>
@@ -49,7 +49,7 @@
                                     <p>Teacher</p>
                                 </div>
                                 <div class = "pd-text">
-                                    <a href = "#">Edit Profile</a>
+                                    <a href="editprofile.html" id="editProfileBtn">Edit Profile</a>
                                 </div>
                             </div>
                         </div>
@@ -206,4 +206,35 @@
     document.getElementById("logout").addEventListener("click", function() {
         window.location.href = "index.html";
     });
+    
+    document.getElementById("editProfileBtn").addEventListener("click", function () {
+        sessionStorage.setItem("profile_name", document.getElementById("profile-name").innerText);
+        sessionStorage.setItem("profile_email", "geparty1@gmail.com");
+        sessionStorage.setItem("profile_bio", document.querySelector(".user-bio p").innerText);
+        sessionStorage.setItem("profile_role", "Teacher");
+    });
+
+    window.addEventListener("DOMContentLoaded", function () {
+    const savedPfp = sessionStorage.getItem("profile_pfp");
+
+    if (savedPfp) {
+        document.getElementById("dashboard-pfp").src = savedPfp;
+        document.getElementById("header-pfp").src = savedPfp;
+    }
+    });
+
+    window.addEventListener("DOMContentLoaded", function () {
+    const name = sessionStorage.getItem("profile_name");
+    const bio = sessionStorage.getItem("profile_bio");
+    const savedPfp = sessionStorage.getItem("profile_pfp");
+
+    if (name) document.getElementById("profile-name").innerText = name;
+    if (bio) document.querySelector(".user-bio p").innerText = bio;
+
+    if (savedPfp) {
+        document.getElementById("dashboard-pfp").src = savedPfp;
+        document.getElementById("header-pfp").src = savedPfp;
+    }
+    });
+
 </script>
