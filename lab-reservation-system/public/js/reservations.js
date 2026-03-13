@@ -3,7 +3,7 @@ let selectedSlot = null;
 const confirmedReservations = [];
 
 function getCurrentUser() {
-    return { id: 1, name: 'Geoffrey Elton' };
+    return { id: 1, name: currentUser.name };
 }
 
 async function getReserveDays() {

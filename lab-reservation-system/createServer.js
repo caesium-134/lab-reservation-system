@@ -72,22 +72,36 @@ app.get("/dashboard", isAuthenticated, async (req,res) => {
     });
 });
 
-app.get("/editprofile", isAuthenticated, (req,res) => {
-    res.render("editprofile", { username: req.session.user });
+app.get("/editprofile", isAuthenticated, async (req,res) => {
+
+    const currentUser = await User.findOne({ username: req.session.user }).lean();
+
+    res.render("editprofile", {
+        username: req.session.user,
+        user: currentUser 
+    });
 });
 
 app.get("/laboratories", isAuthenticated, async (req,res) => {   
     const Laboratory = require("./models/laboratories");          
     const labs = await Laboratory.find();                        
-    res.render("laboratories", { username: req.session.user, labs: labs.map(l => l.toObject()) }); 
+
+    const currentUser = await User.findOne({ username: req.session.user }).lean();
+
+    res.render("laboratories", { 
+        username: req.session.user,         
+        user: currentUser,
+        labs: labs.map(l => l.toObject()) 
+    }); 
 });
 
-app.get("/menu", isAuthenticated, (req,res) => {
-    res.render("menu", { username: req.session.user });
-});
+app.get("/reservation", isAuthenticated, async (req,res) => {
 
-app.get("/reservation", isAuthenticated, (req,res) => {
-    res.render("reservation", { username: req.session.user });
+    const currentUser = await User.findOne({ username: req.session.user }).lean();
+    res.render("reservation", { 
+        username: req.session.user,
+        user: currentUser
+    });
 });
 
 app.get("/view-reservations", isAuthenticated, async (req,res) => {  
@@ -95,7 +109,11 @@ app.get("/view-reservations", isAuthenticated, async (req,res) => {
     const User = require("./models/user");                            
     const user = await User.findOne({ username: req.session.user });  
     const reservations = await Reservation.find({ userId: user._id });
-    res.render("view-reservations", { username: req.session.user, reservations: reservations.map(r => r.toObject()) }); 
+    res.render("view-reservations", {
+        username: req.session.user,
+        user: currentUser,
+        reservations: reservations.map(r => r.toObject()) 
+    }); 
 });
 
 app.get("/search-user", async (req, res) => {
