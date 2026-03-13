@@ -2,11 +2,15 @@
 CCAPDEV MCO - Lab Reservation System 
 
 ## Setup
-1. Install dependencies: npm install mongodb mongoose express express-handlebars 
+1. Open command prompt in the root directory
+   
+2. Install dependencies: npm install mongodb mongoose express express-handlebars 
 
-2. Start the server: node createServer
+3. Seed the database: node seed.js
 
-3. Seed the database with a test user: http://localhost:3000/seed 
+4. Start the server: node createServer
+
+5. Open the website via: http://localhost:3000/
  
 
 
