@@ -104,6 +104,10 @@ body {
     text-decoration: none;
 }
 
+.footer-none {
+    font-weight: 0;
+}
+
 .login-footer p{
     font-weight: bold;
 }

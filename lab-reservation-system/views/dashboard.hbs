@@ -35,18 +35,21 @@
                 </div>
                 <div class = "dashboard-content">
                     <div class = "dashboard-col" id = "d-left">
-                        <img src = "https://static.wikia.nocookie.net/spongebob/images/9/9d/Man_Ray_Returns_001.png/revision/latest/scale-to-width-down/1200?cb=20171001162510" id = "profile-header">
+                        <img src = "{{user.header}}" id = "profile-header">
                         <div class = "user-profile">
-                            <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s" class = "user-pfp" id="dashboard-pfp">
+                            <img src = "{{user.pfp}}" class = "user-pfp" id="dashboard-pfp">
                             <div class = "profile-details">
                                 <div class = "pd-text">
-                                    <p id = "profile-name">Geoffrey Elton</p>
+                                    <p id = "profile-name">{{user.name}}</p>
                                 </div>
                                 <div class = "pd-text">
-                                    <p>geparty1@gmail.com</p>
+                                    <p>{{user.email}}</p>
                                 </div>
                                 <div class = "pd-text">
-                                    <p>Teacher</p>
+                                    <p>{{user.course}}</p>
+                                </div>
+                                <div class = "pd-text">
+                                    <p>{{user.school_year}}</p>
                                 </div>
                                 <div class = "pd-text">
                                     <a href="editprofile" id="editProfileBtn">Edit Profile</a>
@@ -54,7 +57,7 @@
                             </div>
                         </div>
                         <div class = "user-bio">
-                            <p>Hi there! My name is Geoffrey and I love to party. I am currently taking up finance and enjoy writing novels.</p>
+                            <p>{{user.bio}}</p>
                         </div>
                         <div class = "delete-account">
                             <button type = "button" class = "delete-account-btn">Delete Account</button>
@@ -70,7 +73,7 @@
                                     Reserve a laboratory for classes, experiments, or study sessions. Check availability in real time and confirm your booking here.
                                 </div>
                                 <div class = "do-box-btn">
-                                    <button type = "button" class = "dashboard-nav"><a href="reservation.html">Reserve</a></button>
+                                    <button type = "button" class = "dashboard-nav"><a href="reservation">Reserve</a></button>
                                 </div>
                             </div>
                             <div class = "do-box">
@@ -81,7 +84,7 @@
                                     View the reservations you have made and easily check booking details, schedules, and reservation status.
                                 </div>
                                 <div class = "do-box-btn">
-                                    <button type = "button" class = "dashboard-nav"><a href="view-reservations.html">View Reservations</a></button>
+                                    <button type = "button" class = "dashboard-nav"><a href="view-reservations">View Reservations</a></button>
                                 </div>
                             </div>
                             <div class = "do-box" id = "ou-box">
@@ -89,50 +92,24 @@
                                     View Other Profiles
                                 </div>
                                 <div class = "search-user">
-                                    <input type = "textbox" placeholder = "Search User">
+                                    <input type = "textbox" id = "searchUser" placeholder = "Search User">
                                 </div>
+                                {{#each otherUsers}}
                                 <div class = "other-user-box">
-                                    <img src = "https://i.pinimg.com/1200x/27/88/2d/27882d953c061ee056a90b447f75b00c.jpg" class = "ou-header">
+                                    <img src = "{{this.header}}" class = "ou-header">
                                     <p class = "ou-email">jqvaleriotools123@gmail.com</p>
-                                    <img src = "https://i.pinimg.com/474x/e8/4c/6a/e84c6ae72fda88115b7cadc181e1bcbf.jpg" class = "ou-pfp">
+                                    <img src = "{{this.pfp}}" class = "ou-pfp">
                                         <div class = "profile-details">
                                             <div class = "pd-text">
-                                                <p class = "ou-name">Joaquin Valerio</p>
-                                                <p class = "ou-bio">What's up! I'm Joaquin. Im a Legal Management major studying in De La Salle University.</p>
-                                                <p class = "ou-course">Legal Management</p>
-                                                <p class = "ou-year">1st Year</p>
-                                                <p class = "ou-college">College of Liberal Arts</p>
+                                                <p class = "ou-name">{{this.name}}</p>
+                                                <p class = "ou-bio">{{this.bio}}</p>
+                                                <p class = "ou-course">{{this.course}}</p>
+                                                <p class = "ou-year">{{this.school_year}}</p>
+                                                <p class = "ou-college">{{this.college}}</p>
                                             </div>
                                         </div>
                                 </div>
-                                <div class = "other-user-box">
-                                    <img src = "https://i.ytimg.com/vi/g5DYgSaYj8g/maxresdefault.jpg" class = "ou-header">
-                                    <p class = "ou-email">srsgrino@gmail.com</p>
-                                    <img src = "https://i.pinimg.com/736x/b7/0a/08/b70a08eeb2bc008d83e968bd5355d679.jpg" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p class = "ou-name">Seancarlo Grino</p>
-                                                <p class = "ou-bio">Hello! My name is Sean. I am currently studying at DLSU taking up Data Science.</p>
-                                                <p class = "ou-course">Data Science</p>
-                                                <p class = "ou-year">3rd Year</p>
-                                                <p class = "ou-college">College of Science</p>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class = "other-user-box">
-                                    <img src = "https://i.pinimg.com/736x/11/6c/d0/116cd0e1820004a4d403253c61ecd58f.jpg" class = "ou-header">
-                                    <p class = "ou-email">dpenacoolgame123@gmail.com</p>
-                                    <img src = "https://i.pinimg.com/736x/13/82/ee/1382ee84c851e3328ae2512763e0bd7c.jpg" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p class = "ou-name">Daniel Penalotha</p>
-                                                <p class = "ou-bio">Good day everyone! I'm Daniel and I am studying Information Technology in De La Salle University (DLSU)</p>
-                                                <p class = "ou-course">Information Technology</p>
-                                                <p class = "ou-year">2nd Year</p>
-                                                <p class = "ou-college">College of Computer Studies</p>
-                                            </div>
-                                        </div>
-                                </div>
+                                {{/each}}
                             </div>
                         </div>
                     </div>
@@ -203,8 +180,41 @@
         });
     });
 
+    document.getElementById("searchUser").addEventListener("change", async function(){
+
+        const query = this.value.trim();
+
+        if(!query) return;
+
+        const response = await fetch(`/search-user?q=${encodeURIComponent(query)}`);
+        const users = await response.json();
+
+        if(users.length === 0){
+            alert("User not found");
+            return;
+        }
+
+        const user = users[0];
+
+        document.getElementById("modal-name").innerText = user.name;
+        document.getElementById("modal-email").innerText = user.email;
+        document.getElementById("modal-bio").innerText = user.bio;
+        document.getElementById("modal-college").innerText = user.college;
+        document.getElementById("modal-course").innerText = user.course;
+        document.getElementById("modal-year").innerText = user.school_year;
+
+        if(user.pfp){
+            document.getElementById("modal-pfp").src = user.pfp;
+        }
+        if(user.header){
+            document.getElementById("modal-pfp").src = user.pfp;
+        }
+
+        modal.show();
+    });
+
     document.getElementById("logout").addEventListener("click", function() {
-        window.location.href = "index.html";
+        window.location.href = "logout";
     });
     
     document.getElementById("editProfileBtn").addEventListener("click", function () {
@@ -236,5 +246,31 @@
         document.getElementById("header-pfp").src = savedPfp;
     }
     });
+
+    document.querySelector(".delete-account-btn").addEventListener("click", async function() {
+        if(!confirm("Are you sure you want to delete your account? This cannot be undone.")){
+            return;
+        }
+
+        try{
+        const response = await fetch("/delete-account", {
+            method: "DELETE"
+        });
+
+        const result = await response.json();
+
+        if (result.success){
+            alert("Account deleted successfully.");
+            window.location.href = "/";
+        }
+        else{
+            alert("Failed to delete account: " + result.message);
+        }
+    }
+    catch(err){
+        console.error(err);
+        alert("There was an error in deleting your account.");
+    }
+});
 
 </script>

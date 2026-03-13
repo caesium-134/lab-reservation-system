@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const authController = require("./controllers/authController");
 const session = require("express-session");
+const User = require("./models/user");
 
 const app = express();
 
@@ -56,8 +57,19 @@ function isAuthenticated(req, res, next){
     }
 }
 
-app.get("/dashboard", isAuthenticated, (req,res) => {
-    res.render("dashboard", { username: req.session.user });
+app.get("/dashboard", isAuthenticated, async (req,res) => {
+
+    const currentUser = await User.findOne({ username: req.session.user }).lean();
+    const otherUsers = await User.aggregate([
+        { $match: {username: {$ne: req.session.user}}},
+        { $sample: { size: 5 }}
+    ]);
+
+    res.render("dashboard", { 
+        username: req.session.user,
+        user: currentUser,
+        otherUsers: otherUsers
+    });
 });
 
 app.get("/editprofile", isAuthenticated, (req,res) => {
@@ -78,4 +90,48 @@ app.get("/reservation", isAuthenticated, (req,res) => {
 
 app.get("/view-reservations", isAuthenticated, (req,res) => {
     res.render("view-reservations", { username: req.session.user });
+});
+
+app.get("/search-user", async (req, res) => {
+
+    const query = req.query.q.trim();
+
+    if(!query){
+        return res.json([]);
+    }
+
+    const users = await User.find({
+        name: { $regex: `^${query}$`, $options: "i" }
+    }).lean();
+
+    res.json(users);
+
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy(err => {
+        if(err){
+            console.log(err);
+            return res.send("Error logging out");
+        }
+        res.redirect("/index");
+    });
+});
+
+app.delete("/delete-account", isAuthenticated, async (req, res) => {
+    try{
+        const username = req.session.user;
+
+        await User.findOneAndDelete({ username });
+
+        req.session.destroy(err => {
+            if (err) console.log(err);
+        });
+
+        res.json({ success: true, message: "Account deleted successfully" });
+    } 
+    catch(err){
+        console.error(err);
+        res.status(500).json({ success: false, message: "Failed to delete account" });
+    }
 });
