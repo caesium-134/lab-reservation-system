@@ -11,16 +11,65 @@
         <div class = "register-content">
             <div class = "register-container">
                 <h1>Register</h1>
-                <input type = "text" placeholder = "Email" class = "register-text-field">
-                <input type = "text" placeholder = "Username" class = "register-text-field">
-                <input type = "password" placeholder = "Password" class = "register-text-field">
-                <input type = "password" placeholder = "Confirm Password" class = "register-text-field">
-                <button type = "submit" class = "register-submit-btn">Register</button>
+                <input type = "text" id = "email" placeholder = "Email" class = "register-text-field">
+                <input type = "text" id = "username" placeholder = "Username" class = "register-text-field">
+                <input type = "password" id = "password" placeholder = "Password" class = "register-text-field">
+                <input type = "password" id = "confirmPassword" placeholder = "Confirm Password" class = "register-text-field">
+                <button type = "button" class = "register-submit-btn" onclick="registerUser()">Register</button>
+                <p id="register-error" style="color:red; display:none;"></p>
             </div>
         </div>
         <p class = "login-help" id = "email-help">For inquiries contact support.lrs@gmail.com</p>
         <div class = "login-footer">
-            <p>Lab Reservation System</p><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a><a href = "index.html">Placeholder Text</a>
+            <p>Lab Reservation System</p><a href = "index">Placeholder Text</a><a href = "index">Placeholder Text</a><a href = "index">Placeholder Text</a><a href = "index">Placeholder Text</a><a href = "index.html">Placeholder Text</a>
         </div>
     </body>
+
+    <script>
+        async function registerUser(){
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const error = document.getElementById("register-error");
+
+            error.style.display = "none";
+
+            if(!username || !email || !password){
+                error.style.display = "block";
+                error.innerText = "All fields are required.";
+                return;
+            }
+
+            if(password !== confirmPassword){
+                error.style.display = "block";
+                error.innerText = "Passwords do not match.";
+                return;
+            }
+
+            try{
+                const response = await fetch("/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, email, password })
+                });
+
+                const text = await response.text();
+
+                if(response.ok){
+                    alert("Registration successful!");
+                    window.location.href = "/index";
+                }
+                else{
+                    error.style.display = "block";
+                    error.innerText = text;
+                }
+            }
+            catch(err){
+                console.error(err);
+                error.style.display = "block";
+                error.innerText = "Server error";
+            }
+        }
+    </script>
 </html>

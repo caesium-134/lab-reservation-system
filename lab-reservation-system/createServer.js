@@ -135,3 +135,5 @@ app.delete("/delete-account", isAuthenticated, async (req, res) => {
         res.status(500).json({ success: false, message: "Failed to delete account" });
     }
 });
+
+app.post("/register", authController.register);
