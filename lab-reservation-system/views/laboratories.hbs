@@ -41,37 +41,20 @@
                     </select>
                 </div>
 
+                <div class="card-container-wrapper">
+                {{#each labs}}
                 <div class="card-container"> 
-                    <div class="card-header card-available"> 
-                        <h1><a href="reservation">Laboratory 1</a></h1>
-                        <h5> Status: Available</h5>
+                    <div class="card-header {{#if (eq status 'Available')}}card-available{{else}}card-unavailable{{/if}}"> 
+                        <h1><a href="/reservation">{{name}}</a></h1>
+                        <h5>Status: {{status}}</h5>
                     </div>
                     <div class="card-description"> 
-                        <h4>Laboratory 1 located in room 204.</h4>
+                        <h4>{{description}}</h4>
                     </div>
-                     <img src="https://www.aaup.edu/sites/default/files/2024-12/PcLabs.jpg">
+                    <img src="{{image}}">
                 </div>
                 </br></br>
-                <div class="card-container"> 
-                    <div class="card-header card-available"> 
-                        <h1><a href="reservation">Laboratory 2</a></h1>
-                        <h5> Status: Available</h5>
-                    </div>
-                    <div class="card-description"> 
-                        <h4>Laboratory 2 located in room 205.</h4>
-                    </div>
-                     <img src="https://www.education.edu/wp-content/uploads/external/00f3981cab8d7549033b0d314539dd2e-2048x0-c-default.jpg">
-                </div>
-                </br></br>
-                <div class="card-container"> 
-                    <div class="card-header card-available"> 
-                        <h1><a href="reservation">Laboratory 3</a></h1>
-                        <h5> Status: Available</h5>
-                    </div>
-                    <div class="card-description"> 
-                        <h4>Laboratory 3 located in room 206.</h4>
-                    </div>
-                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/A_computer_science_classroom_at_Lee_University_in_Cleveland%2C_Tennessee%2C_United_States_02.jpg">
+                {{/each}}
                 </div>
                  
             </div>

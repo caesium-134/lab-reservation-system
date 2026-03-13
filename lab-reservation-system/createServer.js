@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-app.engine("hbs", exphbs.engine({extname: "hbs", defaultLayout: false}));
+app.engine("hbs", exphbs.engine({extname: "hbs", defaultLayout: false, helpers: {eq: (a, b) => a === b }}));
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
@@ -76,8 +76,10 @@ app.get("/editprofile", isAuthenticated, (req,res) => {
     res.render("editprofile", { username: req.session.user });
 });
 
-app.get("/laboratories", isAuthenticated, (req,res) => {
-    res.render("laboratories", { username: req.session.user });
+app.get("/laboratories", isAuthenticated, async (req,res) => {   
+    const Laboratory = require("./models/laboratories");          
+    const labs = await Laboratory.find();                        
+    res.render("laboratories", { username: req.session.user, labs: labs.map(l => l.toObject()) }); 
 });
 
 app.get("/menu", isAuthenticated, (req,res) => {
@@ -88,8 +90,12 @@ app.get("/reservation", isAuthenticated, (req,res) => {
     res.render("reservation", { username: req.session.user });
 });
 
-app.get("/view-reservations", isAuthenticated, (req,res) => {
-    res.render("view-reservations", { username: req.session.user });
+app.get("/view-reservations", isAuthenticated, async (req,res) => {  
+    const Reservation = require("./models/reservations");             
+    const User = require("./models/user");                            
+    const user = await User.findOne({ username: req.session.user });  
+    const reservations = await Reservation.find({ userId: user._id });
+    res.render("view-reservations", { username: req.session.user, reservations: reservations.map(r => r.toObject()) }); 
 });
 
 app.get("/search-user", async (req, res) => {
