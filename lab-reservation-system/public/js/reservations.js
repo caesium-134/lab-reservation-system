@@ -3,7 +3,7 @@ let selectedSlot = null;
 const confirmedReservations = [];
 
 function getCurrentUser() {
-    return { id: 1, name: 'Geoffrey Elton' };
+    return { name: typeof CURRENT_USER !== 'undefined' ? CURRENT_USER : 'Guest' };
 }
 
 async function getReserveDays() {
@@ -26,24 +26,24 @@ async function getReserveDays() {
         days.push({
             date: fmt(d),
             timeslot: '11:00 - 12:30',
-            available_seats: { A: [1,2,3,4,5,6,7,8,9], B: [10,11,12,13,14,15,16,17,18] }
+            available_seats: { A: [1,2,3,4,5,6,7,8,9], B: [10,11,12,13,14,15,16,17,18]}
         });
     }
     return days;
 }
 
 async function getReservations() {
-    return confirmedReservations;
+    const res = await fetch("/api/reservations");
+    return await res.json();
 }
 
 async function createReservation(data) {
-        confirmedReservations.push({
-        date:     data.date,
-        timeslot: data.timeslot,
-        seat:     data.seat,
-        user:     getCurrentUser().name
+       const res = await fetch("/api/reservations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
     });
-    return { success: true };
+    return await res.json();
 }
 
 function getWeekDates(offset) {
@@ -120,13 +120,13 @@ async function loadReservationCalendar() {
 
                 seats.forEach(seatNum => {
                     const isOccupied = reservations.some(r =>
-                        r.date     === dateStr &&
-                        r.timeslot === schedule.timeslot &&
-                        r.seat     === seatNum             
+                        r.date === dateStr &&
+                        r.time === schedule.timeslot &&
+                        r.seat_name === String(seatNum)             
                     );
 
                     const occupant = reservations.find(r =>
-                        r.date === dateStr && r.timeslot === schedule.timeslot && r.seat === seatNum
+                        r.date === dateStr && r.time === schedule.timeslot && r.seat_name === String(seatNum)
                     );
 
                     if (isOccupied) {
