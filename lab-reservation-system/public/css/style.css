@@ -824,12 +824,14 @@ input[type="radio"] { display: none; }
     padding-bottom: 10px;
 }
 
-.seat-section-grid .seat-cb, .seat-section-grid .booking-modal { display: none; } 
-.seat-section-grid .seat-cb:checked + label + .booking-modal,
-.seat-section-grid .seat-cb:checked ~ .booking-modal {
-    display: flex;
+.seat-wrapper {
+    position: relative;
+    display: inline-block;
 }
-.seat-cb{display: none;}
+
+.seat-cb { display: none; }
+.booking-modal { display: none; }
+.seat-cb:checked + label + .booking-modal { display: flex; }
 .seat-slot {
     padding: 8px 16px;
     border-radius: 6px;
@@ -936,7 +938,7 @@ input[type="radio"] { display: none; }
 
 .btn-confirm:hover {background: lightgray;}
 
-.seat-cb:checked ~ .booking-modal { display: flex; }
+ 
 
 /* laboratories.html */
 .lab-container{
@@ -982,6 +984,42 @@ input[type="radio"] { display: none; }
 .card-container img{
     width: 400px;
     height: auto;
+}
+
+/* Reservation Page Container */
+
+.reservation-container {
+    flex: 1;
+    padding: 20px 30px;
+    overflow-y: auto;
+    background: #f5f2ed;
+}
+
+.reservation-section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.search-user {
+    margin-bottom: 20px;
+}
+
+.search-user input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 30px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.search-user input:focus {
+    border-color: #a0aec0;
 }
 
 /* View Reservations */
