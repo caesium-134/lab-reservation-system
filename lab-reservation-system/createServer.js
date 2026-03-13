@@ -79,3 +79,32 @@ app.get("/reservation", isAuthenticated, (req,res) => {
 app.get("/view-reservations", isAuthenticated, (req,res) => {
     res.render("view-reservations", { username: req.session.user });
 });
+
+
+// api route for reservations
+const Reservation = require("./models/reservations");
+
+// get all reservations
+app.get("/api/reservations", isAuthenticated, async (req, res) => {
+    const reservations = await Reservation.find();
+    res.json(reservations);
+});
+
+// create a reservation
+app.post("/api/reservations", isAuthenticated, async (req, res) => {
+    const { date, timeslot, seat, lab } = req.body;
+
+    const existing = await Reservation.findOne({ date, time: timeslot, seat_name: String(seat), lab });
+    if (existing) return res.json({ success: false, message: "Seat already taken" });
+
+    const newReservation = new Reservation({
+        seat_name: String(seat),
+        lab: lab || "A",
+        date,
+        time: timeslot,
+        user: req.session.user
+    });
+
+    await newReservation.save();
+    res.json({ success: true });
+});  
