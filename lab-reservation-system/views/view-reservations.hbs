@@ -39,27 +39,19 @@
                             <th>Time</th>
                             <th>Status</th>
                         </tr>
+                        {{#each reservations}}
                         <tr>
-                            <td>Lab 1</td>
-                            <td>23</td>
-                            <td>Feb 14</td>
-                            <td>10 - 12</td>
-                            <td>Approved</td>
+                            <td>{{lab}}</td>
+                            <td>{{seats}}</td>
+                            <td>{{date}}</td>
+                            <td>{{time}}</td>
+                            <td>{{status}}</td>
                         </tr>
+                        {{else}}
                         <tr>
-                            <td>Lab 2</td>
-                            <td>15</td>
-                            <td>March 14</td>
-                            <td>1 - 3</td>
-                            <td>Approved</td>
+                            <td colspan="5">No reservations found.</td>
                         </tr>
-                        <tr>
-                            <td>Lab 3</td>
-                            <td>08</td>
-                            <td>March 21</td>
-                            <td>930 - 1030</td>
-                            <td>Approved</td>
-                        </tr>
+                        {{/each}}
                     </table>
 
                     <footer class = "view-reservation-footer">
