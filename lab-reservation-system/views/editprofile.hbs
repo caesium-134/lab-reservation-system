@@ -64,7 +64,7 @@
 
       <div class="form-actions">
         <button type="button" class="edit-profile-btn" onclick="saveProfile()">Save Profile</button>
-        <button type="button" onclick="window.location.href='dashboard.html'">Cancel</button>
+        <button type="button" onclick="window.location.href='/dashboard'">Cancel</button>
       </div>
     </form>
   </div>
@@ -197,7 +197,7 @@
     sessionStorage.setItem("profile_name", document.getElementById("name").value);
     sessionStorage.setItem("profile_bio", document.getElementById("bio").value);
 
-    window.location.href = "dashboard.html";
+    window.location.href = "/dashboard";
     }
 
     document.getElementById("profile-picture").addEventListener("change", function () {
