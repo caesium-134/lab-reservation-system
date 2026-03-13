@@ -1,10 +1,9 @@
-const express = require("express");
+ const express = require("express");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const authController = require("./controllers/authController");
 const session = require("express-session");
-const User = require("./models/user");
 
 const app = express();
 
@@ -57,29 +56,27 @@ function isAuthenticated(req, res, next){
     }
 }
 
-app.get("/dashboard", isAuthenticated, async (req,res) => {
+const User = require("./models/user");
 
-    const currentUser = await User.findOne({ username: req.session.user }).lean();
-    const otherUsers = await User.aggregate([
-        { $match: {username: {$ne: req.session.user}}},
-        { $sample: { size: 5 }}
-    ]);
-
-    res.render("dashboard", { 
-        username: req.session.user,
-        user: currentUser,
-        otherUsers: otherUsers
-    });
+app.get("/dashboard", isAuthenticated, (req,res) => {
+    res.render("dashboard", { user: req.session.user });
 });
 
-app.get("/editprofile", isAuthenticated, (req,res) => {
-    res.render("editprofile", { username: req.session.user });
+app.get("/editprofile", isAuthenticated, async (req,res) => {
+    const fullUser = await User.findOne({ username: req.session.user.username }).lean();
+    res.render("editprofile", { user: fullUser || req.session.user });
 });
 
 app.get("/laboratories", isAuthenticated, async (req,res) => {   
     const Laboratory = require("./models/laboratories");          
     const labs = await Laboratory.find();                        
     res.render("laboratories", { username: req.session.user, labs: labs.map(l => l.toObject()) }); 
+});
+
+app.post("/editprofile", isAuthenticated, async (req, res) => {
+    const updates = req.body;
+    await User.findOneAndUpdate({ username: req.session.user.username }, updates, { upsert: true });
+    res.redirect("/dashboard");
 });
 
 app.get("/menu", isAuthenticated, (req,res) => {
@@ -97,49 +94,3 @@ app.get("/view-reservations", isAuthenticated, async (req,res) => {
     const reservations = await Reservation.find({ userId: user._id });
     res.render("view-reservations", { username: req.session.user, reservations: reservations.map(r => r.toObject()) }); 
 });
-
-app.get("/search-user", async (req, res) => {
-
-    const query = req.query.q.trim();
-
-    if(!query){
-        return res.json([]);
-    }
-
-    const users = await User.find({
-        name: { $regex: `^${query}$`, $options: "i" }
-    }).lean();
-
-    res.json(users);
-
-});
-
-app.get("/logout", (req, res) => {
-    req.session.destroy(err => {
-        if(err){
-            console.log(err);
-            return res.send("Error logging out");
-        }
-        res.redirect("/index");
-    });
-});
-
-app.delete("/delete-account", isAuthenticated, async (req, res) => {
-    try{
-        const username = req.session.user;
-
-        await User.findOneAndDelete({ username });
-
-        req.session.destroy(err => {
-            if (err) console.log(err);
-        });
-
-        res.json({ success: true, message: "Account deleted successfully" });
-    } 
-    catch(err){
-        console.error(err);
-        res.status(500).json({ success: false, message: "Failed to delete account" });
-    }
-});
-
-app.post("/register", authController.register);
