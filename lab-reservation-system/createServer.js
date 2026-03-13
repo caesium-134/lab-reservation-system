@@ -41,6 +41,10 @@ app.get("/index", (req,res)=>{
     res.render("index");
 });
 
+app.get("/register", (req,res)=>{
+    res.render("register");
+});
+
 app.post("/index", authController.login);
 
 function isAuthenticated(req, res, next){
@@ -54,4 +58,24 @@ function isAuthenticated(req, res, next){
 
 app.get("/dashboard", isAuthenticated, (req,res) => {
     res.render("dashboard", { username: req.session.user });
+});
+
+app.get("/editprofile", isAuthenticated, (req,res) => {
+    res.render("editprofile", { username: req.session.user });
+});
+
+app.get("/laboratories", isAuthenticated, (req,res) => {
+    res.render("laboratories", { username: req.session.user });
+});
+
+app.get("/menu", isAuthenticated, (req,res) => {
+    res.render("menu", { username: req.session.user });
+});
+
+app.get("/reservation", isAuthenticated, (req,res) => {
+    res.render("reservation", { username: req.session.user });
+});
+
+app.get("/view-reservations", isAuthenticated, (req,res) => {
+    res.render("view-reservations", { username: req.session.user });
 });

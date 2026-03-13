@@ -21,10 +21,10 @@
       <div class="basic-info-section">
         <h2>Basic Information</h2>
         <label for="id-number">ID Number</label>
-        <input type="text" id="id-number" name="id-number" value="123456789" readonly>
+        <input type="text" class = "edit-profile-txt" id="id-number" name="id-number" value="123456789" readonly>
 
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" value="Geoffrey Elton">
+        <input type="text" class = "edit-profile-txt" id="name" name="name" value="Geoffrey Elton">
 
         <label for="bio">Bio</label>
         <textarea id="bio" name="bio" rows="4">Hi there! My name is Geoffrey and I love to party. I am currently taking up finance and enjoy writing novels.</textarea>
@@ -33,7 +33,7 @@
       <div class="stats-section">
         <h2>Additional Details</h2>
         <label for="school-year">School Year</label>
-        <select id="school-year" name="school-year">
+        <select class = "edit-profile-select" id="school-year" name="school-year">
           <option value="1st Year">1st Year</option>
           <option value="2nd Year">2nd Year</option>
           <option value="3rd Year" selected>3rd Year</option>
@@ -42,10 +42,10 @@
         </select>
 
         <label for="birthday">Birthday</label>
-        <input type="date" id="birthday" name="birthday" value="2000-06-13">
+        <input type="date" class = "edit-profile-date" id="birthday" name="birthday" value="2000-06-13">
 
         <label for="college">College</label>
-        <select id="college" name="college">
+        <select class= "edit-profile-select" id="college" name="college">
           <option value="">Select College</option>
           <option value="COLLEGE OF COMPUTER STUDIES">COLLEGE OF COMPUTER STUDIES</option>
           <option value="BR. ANDREW GONZALEZ COLLEGE OF EDUCATION">BR. ANDREW GONZALEZ COLLEGE OF EDUCATION</option>
@@ -57,13 +57,13 @@
         </select>
 
         <label for="course">Course</label>
-        <select id="course" name="course">
+        <select class = "edit-profile-select"id="course" name="course">
           <option value="">Select Course</option>
         </select>
       </div>
 
       <div class="form-actions">
-        <button type="button" onclick="saveProfile()">Save Profile</button>
+        <button type="button" class="edit-profile-btn" onclick="saveProfile()">Save Profile</button>
         <button type="button" onclick="window.location.href='dashboard.html'">Cancel</button>
       </div>
     </form>
