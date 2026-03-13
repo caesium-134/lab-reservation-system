@@ -11,7 +11,9 @@ const userSchema = new mongoose.Schema({
     birthday: Date,
     college: String,
     course: String,
-    profilePic: String // base64
+    profilePic: String, // base64
+    pfp: String,
+    header: String
 });
 
 module.exports = mongoose.model("User", userSchema);
