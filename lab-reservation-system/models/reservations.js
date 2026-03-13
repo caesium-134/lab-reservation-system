@@ -4,8 +4,8 @@ const reservationSchema = new mongoose.Schema({
     seat_name: String,
     lab: String,
     date: String,
-    time: String
+    time: String,
+    user: String 
 });
 
 module.exports = mongoose.model("Reservation", reservationSchema);
-
