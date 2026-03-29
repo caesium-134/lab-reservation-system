@@ -1061,12 +1061,13 @@ input[type="radio"] { display: none; }
     flex-direction: column;
     align-items: left;
     padding: 25px;
-    height: 63vh;
+    height: 70vh;
     width: 360px;
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     margin: 20px;
+    background: white; 
 }
 
 .register-text-field, .register-submit-btn{
