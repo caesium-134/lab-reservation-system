@@ -107,11 +107,13 @@ app.post("/editprofile", isAuthenticated, async (req, res) => {
 });
 
 app.get("/reservation", isAuthenticated, async (req,res) => {
-
+    const Laboratory = require("./models/laboratories");
     const currentUser = await User.findOne({ username: req.session.user }).lean();
+    const labs = await Laboratory.find().lean();
     res.render("reservation", { 
         username: req.session.user,
-        user: currentUser
+        user: currentUser,
+        labs: labs
     });
 });
 
@@ -122,6 +124,7 @@ app.get("/api/reservations", isAuthenticated, async (req, res) => {
         date:     r.date,
         timeslot: r.time,
         seat:     parseInt(r.seat_name.replace("Seat ", "")),
+        lab:      r.lab,
         user:     r.anonymous ? "Anonymous" : (r.userId?.name || "Unknown")
     }));
     res.json(formatted);

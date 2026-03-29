@@ -127,14 +127,17 @@ async function loadReservationCalendar() {
                 sectionGrid.className = 'seat-section-grid';
 
                 seats.forEach(seatNum => {
+                    const currentLab = document.getElementById('lab-filter')?.value || '';
+
                     const isOccupied = reservations.some(r =>
                         r.date     === dateStr &&
                         r.timeslot === schedule.timeslot &&
-                        r.seat     === seatNum             
+                        r.seat     === seatNum &&
+                        r.lab      === currentLab
                     );
 
                     const occupant = reservations.find(r =>
-                        r.date === dateStr && r.timeslot === schedule.timeslot && r.seat === seatNum
+                        r.date === dateStr && r.timeslot === schedule.timeslot && r.seat === seatNum && r.lab === currentLab
                     );
 
                     if (isOccupied) {
@@ -169,7 +172,7 @@ async function loadReservationCalendar() {
                                 <div class="modal-actions">
                                     <label for="${uid}" class="btn-close-modal">Cancel</label>
                                     <label for="${uid}" class="btn-confirm"
-                                        onclick="handleConfirm('${dateStr}','${schedule.timeslot}',${seatNum},'${uid}')">
+                                        onclick="handleConfirm('${dateStr}','${schedule.timeslot}',${seatNum},'${uid}',document.getElementById('lab-filter').value)">
                                         Confirm
                                     </label>
                                 </div>
@@ -195,7 +198,7 @@ async function loadReservationCalendar() {
     });
 }
 
-async function handleConfirm(date, timeslot, seat, checkboxId) {
+async function handleConfirm(date, timeslot, seat, checkboxId, lab) {
     const cb = document.getElementById(checkboxId);
     if (cb) cb.checked = false;
 
@@ -204,7 +207,8 @@ async function handleConfirm(date, timeslot, seat, checkboxId) {
         user_id:  user.id,
         date,
         timeslot,
-        seat                                              
+        seat,
+        lab
     });
 
     if (result.success) {
