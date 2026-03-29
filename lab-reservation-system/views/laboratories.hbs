@@ -45,7 +45,7 @@
                         <option value="unavailable">Unavailable</option>
                     </select>
                 </div>
-
+                <br> 
                 <div class="card-container-wrapper">
                 {{#each labs}}
                 <div class="card-container" data-status="{{status}}"> 
@@ -58,7 +58,9 @@
                     <div class="card-description"> 
                         <h4>{{description}}</h4>
                     </div>
-                    <img src="{{image}}">
+                    <div style="display: flex; margin: auto; padding-left: 7.5vw">
+                        <img src="{{image}}" style="width: 5wv; height: 16vw">
+                    </div>
                 </div>
                 <br><br>
                 {{/each}}
