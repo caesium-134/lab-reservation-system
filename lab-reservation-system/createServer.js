@@ -172,6 +172,31 @@ app.delete("/reservation/:id", isAuthenticated, async (req, res) => {
     }
 });
 
+// ─── Search Free Slots ────────────────────────────────────────────────────────
+app.get("/search-slots", isAuthenticated, async (req, res) => {
+    const { date, time, lab } = req.query;
+
+    if (!date || !time || !lab) {
+        return res.status(400).json({ success: false, message: "Date, time, and lab are all required." });
+    }
+
+    const allSeats = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+
+    const takenReservations = await Reservation.find({ date, time, lab })
+        .populate("userId", "name")
+        .lean();
+
+    const takenSeats = takenReservations.map(r => ({
+        seat: parseInt(r.seat_name.replace("Seat ", "")),
+        user: r.anonymous ? "Anonymous" : (r.userId?.name || "Unknown")
+    }));
+
+    const takenNums = takenSeats.map(s => s.seat);
+    const freeSeats = allSeats.filter(s => !takenNums.includes(s));
+
+    res.json({ success: true, date, time, lab, freeSeats, takenSeats });
+});
+
 // ─── Search Users ─────────────────────────────────────────────────────────────
 app.get("/search-user", async (req, res) => {
     const query = req.query.q.trim();
@@ -197,6 +222,8 @@ app.get("/logout", (req, res) => {
 app.delete("/delete-account", isAuthenticated, async (req, res) => {
     try {
         const username = req.session.user;
+        const user = await User.findOne({ username });
+        await Reservation.deleteMany({ userId: user._id });
         await User.findOneAndDelete({ username });
         req.session.destroy(err => {
             if (err) console.log(err);
