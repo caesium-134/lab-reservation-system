@@ -40,8 +40,9 @@
                         <tr>
                             <th>Room</th>
                             <th>Seat</th>
-                            <th>Date</th>
+                            <th>Date of Reservation</th>
                             <th>Time</th>
+                            <th>Date and Time Requested</th>
                             <th>Status</th>
                             <th style="text-align:center;">Edit</th>
                             <th style="text-align:center;">Delete</th>
@@ -52,6 +53,7 @@
                             <td>{{this.seat_name}}</td>
                             <td>{{this.date}}</td>
                             <td>{{this.time}}</td>
+                            <td>{{this.requestDate}}</td>
                             <td>{{this.status}}</td>
                             <td style="text-align:center;">
                                 <button class="row-edit-btn" onclick="editReservation('{{this._id}}')">&#x2217;</button>
@@ -62,7 +64,7 @@
                         </tr>
                         {{else}}
                         <tr>
-                            <td colspan="7">No reservations found.</td>
+                            <td colspan="8">No reservations found.</td>
                         </tr>
                         {{/each}}
                     </table>
@@ -133,7 +135,6 @@
                 alert("WIP");
             }
 
-            // Close modal if clicking outside
             document.getElementById("deleteModal").addEventListener("click", function(e) {
                 if (e.target === this) closeDeleteModal();
             });
