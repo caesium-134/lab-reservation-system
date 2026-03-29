@@ -1,113 +1,108 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href = "css/style.css" rel = "stylesheet" type = "text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Lab Reservation System</title>
         <link rel="icon" type="image/x-icon" href="src/favicon.png">
     </head>
     <body>
-        <div class = "header">
-            <div class = "header-left">
+        <div class="header">
+            <div class="header-left">
                 Lab Reservation System
             </div>
-
-            <div class = "header-right">
-                <div class = "username">
+            <div class="header-right">
+                <div class="username">
                     {{user.name}}
                 </div>
-                <img src = "{{user.pfp}}">
-                <div id = "logout">
+                <img src="{{user.profilePic}}">
+                <div id="logout">
                     Logout
                     <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
                 </div>
             </div>
         </div>
-        <div class = "dashboard-container">
-            <div class = "sidebar">
-                <div class = "nav" id = "dashboard-nav"><a href="dashboard">Dashboard</a></div>
-                <div class = "nav"><a href="laboratories">Laboratories</a></div>
-                <div class = "nav"><a href="reservation">Reservations</a></div>
+
+        <div class="dashboard-container">
+            <div class="sidebar">
+                <div class="nav" id="dashboard-nav"><a href="dashboard">Dashboard</a></div>
+                <div class="nav"><a href="laboratories">Laboratories</a></div>
+                <div class="nav"><a href="reservation">Reservations</a></div>
             </div>
-            <div class = "main-content">
-                <div class = "dashboard-header">
+            <div class="main-content">
+                <div class="dashboard-header">
                     Dashboard
                 </div>
-                <div class = "dashboard-content">
-                    <div class = "dashboard-col" id = "d-left">
-                        <img src = "{{user.header}}" id = "profile-header">
-                        <div class = "user-profile">
-                            <img src = "{{user.pfp}}" class = "user-pfp" id="dashboard-pfp">
-                            <div class = "profile-details">
-                                <div class = "pd-text">
-                                    <p id = "profile-name">{{user.name}}</p>
+                <div class="dashboard-content">
+                    <div class="dashboard-col" id="d-left">
+                        <img src="{{user.header}}" id="profile-header">
+                        <div class="user-profile">
+                            <img src="{{user.profilePic}}" class="user-pfp" id="dashboard-pfp">
+                            <div class="profile-details">
+                                <div class="pd-text">
+                                    <p id="profile-name">{{user.name}}</p>
                                 </div>
-                                <div class = "pd-text">
+                                <div class="pd-text">
                                     <p>{{user.email}}</p>
                                 </div>
-                                <div class = "pd-text">
+                                <div class="pd-text">
                                     <p>{{user.course}}</p>
                                 </div>
-                                <div class = "pd-text">
-                                    <p>{{user.school_year}}</p>
+                                <div class="pd-text">
+                                    <p>{{user.schoolYear}}</p>
                                 </div>
-                                <div class = "pd-text">
+                                <div class="pd-text">
                                     <a href="editprofile" id="editProfileBtn">Edit Profile</a>
                                 </div>
                             </div>
                         </div>
-                        <div class = "user-bio">
+                        <div class="user-bio">
                             <p>{{user.bio}}</p>
                         </div>
-                        <div class = "delete-account">
-                            <button type = "button" class = "delete-account-btn">Delete Account</button>
+                        <div class="delete-account">
+                            <button type="button" class="delete-account-btn">Delete Account</button>
                         </div>
                     </div>
-                    <div class = "dashboard-col" id = "d-right">
-                        <div class = "dashboard-options">
-                            <div class = "do-box">
-                                <div class = "do-box-header">
-                                    Reserve a Lab
-                                </div>
-                                <div class = "do-box-description">
+
+                    <div class="dashboard-col" id="d-right">
+                        <div class="dashboard-options">
+                            <div class="do-box">
+                                <div class="do-box-header">Reserve a Lab</div>
+                                <div class="do-box-description">
                                     Reserve a laboratory for classes, experiments, or study sessions. Check availability in real time and confirm your booking here.
                                 </div>
-                                <div class = "do-box-btn">
-                                    <button type = "button" class = "dashboard-nav"><a href="reservation">Reserve</a></button>
+                                <div class="do-box-btn">
+                                    <button type="button" class="dashboard-nav"><a href="reservation">Reserve</a></button>
                                 </div>
                             </div>
-                            <div class = "do-box">
-                                <div class = "do-box-header">
-                                    My Reservations
-                                </div>
-                                <div class = "do-box-description">
+                            <div class="do-box">
+                                <div class="do-box-header">My Reservations</div>
+                                <div class="do-box-description">
                                     View the reservations you have made and easily check booking details, schedules, and reservation status.
                                 </div>
-                                <div class = "do-box-btn">
-                                    <button type = "button" class = "dashboard-nav"><a href="view-reservations">View Reservations</a></button>
+                                <div class="do-box-btn">
+                                    <button type="button" class="dashboard-nav"><a href="view-reservations">View Reservations</a></button>
                                 </div>
                             </div>
-                            <div class = "do-box" id = "ou-box">
-                                <div class = "do-box-header">
-                                    View Other Profiles
-                                </div>
-                                <div class = "search-user">
-                                    <input type = "textbox" id = "searchUser" placeholder = "Search User">
+                            <div class="do-box" id="ou-box">
+                                <div class="do-box-header">View Other Profiles</div>
+                                <div class="search-user">
+                                    <input type="textbox" id="searchUser" placeholder="Search User">
                                 </div>
                                 {{#each otherUsers}}
-                                <div class = "other-user-box">
-                                    <img src = "{{this.header}}" class = "ou-header">
-                                    <p class = "ou-email">{{this.email}}</p>
-                                    <img src = "{{this.pfp}}" class = "ou-pfp">
-                                        <div class = "profile-details">
-                                            <div class = "pd-text">
-                                                <p class = "ou-name">{{this.name}}</p>
-                                                <p class = "ou-bio">{{this.bio}}</p>
-                                                <p class = "ou-course">{{this.course}}</p>
-                                                <p class = "ou-year">{{this.school_year}}</p>
-                                                <p class = "ou-college">{{this.college}}</p>
-                                            </div>
+                                <div class="other-user-box">
+                                    <img src="{{this.header}}" class="ou-header">
+                                    <p class="ou-email">{{this.email}}</p>
+                                    <img src="{{this.profilePic}}" class="ou-pfp">
+                                    <div class="profile-details">
+                                        <div class="pd-text">
+                                            <p class="ou-name">{{this.name}}</p>
+                                            <p class="ou-bio">{{this.bio}}</p>
+                                            <p class="ou-course">{{this.course}}</p>
+                                            <p class="ou-year">{{this.schoolYear}}</p>
+                                            <p class="ou-college">{{this.college}}</p>
                                         </div>
+                                    </div>
                                 </div>
                                 {{/each}}
                             </div>
@@ -116,38 +111,38 @@
                 </div>
             </div>
         </div>
-        <div class = "modal fade" id = "profileModal" tabindex = "-1">
-        <div class = "modal-dialog">
-            <div class = "modal-content">
 
-            <div class = "modal-header">
-                <h5 class = "modal-title">User Profile</h5>
-                <button type = "button" class = "btn-close" data-bs-dismiss = "modal"></button>
-            </div>
-
-            <div class = "modal-body">
-                <div class = "modal-top">
-                    <img id = "modal-img-header" src = "">
-                </div>
-                <div class = "modal-bottom">
-                    <div class = "modal-details">
-                        <img id = "modal-pfp" src="">
-                        <h5 id = "modal-name"></h5>
-                        <p id = "modal-email"></p>
-                        <p>Student</p>
-                        <p id = "modal-college"></p>
-                        <p id = "modal-course"></p>
-                        <p id = "modal-year"></p>
+        <!-- Profile Modal -->
+        <div class="modal fade" id="profileModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">User Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <div id = "modal-other">
-                        <p id = "modal-bio"></p>
+                    <div class="modal-body">
+                        <div class="modal-top">
+                            <img id="modal-img-header" src="">
+                        </div>
+                        <div class="modal-bottom">
+                            <div class="modal-details">
+                                <img id="modal-pfp" src="">
+                                <h5 id="modal-name"></h5>
+                                <p id="modal-email"></p>
+                                <p>Student</p>
+                                <p id="modal-college"></p>
+                                <p id="modal-course"></p>
+                                <p id="modal-year"></p>
+                            </div>
+                            <div id="modal-other">
+                                <p id="modal-bio"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
             </div>
         </div>
-        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
@@ -157,7 +152,7 @@
     const modal = new bootstrap.Modal(document.getElementById("profileModal"));
 
     profiles.forEach(profile => {
-        profile.addEventListener("click", function() {
+        profile.addEventListener("click", function () {
             const name = this.querySelector(".ou-name").innerText;
             const pfp = this.querySelector(".ou-pfp").src;
             const header = this.querySelector(".ou-header").src;
@@ -180,97 +175,56 @@
         });
     });
 
-    document.getElementById("searchUser").addEventListener("change", async function(){
-
+    document.getElementById("searchUser").addEventListener("change", async function () {
         const query = this.value.trim();
-
-        if(!query) return;
+        if (!query) return;
 
         const response = await fetch(`/search-user?q=${encodeURIComponent(query)}`);
         const users = await response.json();
 
-        if(users.length === 0){
+        if (users.length === 0) {
             alert("User not found");
             return;
         }
 
         const user = users[0];
-
         document.getElementById("modal-name").innerText = user.name;
         document.getElementById("modal-email").innerText = user.email;
         document.getElementById("modal-bio").innerText = user.bio;
         document.getElementById("modal-college").innerText = user.college;
         document.getElementById("modal-course").innerText = user.course;
-        document.getElementById("modal-year").innerText = user.school_year;
+        document.getElementById("modal-year").innerText = user.schoolYear;
 
-        if(user.pfp){
-            document.getElementById("modal-pfp").src = user.pfp;
+        if (user.profilePic) {
+            document.getElementById("modal-pfp").src = user.profilePic;
         }
-        if(user.header){
-            document.getElementById("modal-pfp").src = user.pfp;
+        if (user.header) {
+            document.getElementById("modal-img-header").src = user.header;
         }
 
         modal.show();
     });
 
-    document.getElementById("logout").addEventListener("click", function() {
-        window.location.href = "logout";
-    });
-    
-    document.getElementById("editProfileBtn").addEventListener("click", function () {
-        sessionStorage.setItem("profile_name", document.getElementById("profile-name").innerText);
-        sessionStorage.setItem("profile_email", "geparty1@gmail.com");
-        sessionStorage.setItem("profile_bio", document.querySelector(".user-bio p").innerText);
-        sessionStorage.setItem("profile_role", "Teacher");
+    document.getElementById("logout").addEventListener("click", function () {
+        window.location.href = "/logout";
     });
 
-    window.addEventListener("DOMContentLoaded", function () {
-    const savedPfp = sessionStorage.getItem("profile_pfp");
-
-    if (savedPfp) {
-        document.getElementById("dashboard-pfp").src = savedPfp;
-        document.getElementById("header-pfp").src = savedPfp;
-    }
-    });
-
-    window.addEventListener("DOMContentLoaded", function () {
-    const name = sessionStorage.getItem("profile_name");
-    const bio = sessionStorage.getItem("profile_bio");
-    const savedPfp = sessionStorage.getItem("profile_pfp");
-
-    if (name) document.getElementById("profile-name").innerText = name;
-    if (bio) document.querySelector(".user-bio p").innerText = bio;
-
-    if (savedPfp) {
-        document.getElementById("dashboard-pfp").src = savedPfp;
-        document.getElementById("header-pfp").src = savedPfp;
-    }
-    });
-
-    document.querySelector(".delete-account-btn").addEventListener("click", async function() {
-        if(!confirm("Are you sure you want to delete your account? This cannot be undone.")){
+    document.querySelector(".delete-account-btn").addEventListener("click", async function () {
+        if (!confirm("Are you sure you want to delete your account? This cannot be undone.")) {
             return;
         }
-
-        try{
-        const response = await fetch("/delete-account", {
-            method: "DELETE"
-        });
-
-        const result = await response.json();
-
-        if (result.success){
-            alert("Account deleted successfully.");
-            window.location.href = "/";
+        try {
+            const response = await fetch("/delete-account", { method: "DELETE" });
+            const result = await response.json();
+            if (result.success) {
+                alert("Account deleted successfully.");
+                window.location.href = "/";
+            } else {
+                alert("Failed to delete account: " + result.message);
+            }
+        } catch (err) {
+            console.error(err);
+            alert("There was an error in deleting your account.");
         }
-        else{
-            alert("Failed to delete account: " + result.message);
-        }
-    }
-    catch(err){
-        console.error(err);
-        alert("There was an error in deleting your account.");
-    }
-});
-
+    });
 </script>

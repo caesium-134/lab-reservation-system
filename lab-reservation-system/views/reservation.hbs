@@ -6,68 +6,61 @@
 </script>
 
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Lab Reservation</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Reservation System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="src/favicon.png">
 </head>
-<body> 
-    <div class = "header">
-            <div class = "header-left">
-                Lab Reservation System
-            </div>
-
-            <div class = "header-right">
-                <div class = "username">
-                    {{user.name}}
-                </div>
-                <img src = "{{user.pfp}}">
-            </div>
+<body>
+    <div class="header">
+        <div class="header-left">
+            Lab Reservation System
         </div>
-        <div class = "content">
-            <div class = "sidebar">
-                <div class = "nav"><a href="dashboard">Dashboard</a></div>
-                <div class = "nav"><a href="laboratories">Laboratories</a></div>
-                <div class = "nav" id="dashboard-nav">Reservations</div>
+        <div class="header-right">
+            <div class="username">
+                {{user.name}}
             </div>
-
-    <div class="container">
-        <div class="reservation-section">
-            <h2>Seat Reservations</h2>
-            <div class="week-selector">
-                <button class="btn-secondary">Previous Week</button>
-                <span id="week-display"></span>
-                <button class="btn-secondary">Next Week</button>
-            </div>
-
-            <div class="filter-section">
-                <label>Filter by Day:</label>
-                <select id="day-filter">
-                    <option value="all">All</option>
-                    <option value="Mon">Monday</option>
-                    <option value="Tues">Tuesday</option>
-                    <option value="Wed">Wednesday</option>
-                    <option value="Thurs">Thursday</option>
-                    <option value="Fri">Friday</option>
-                    <option value="Sat">Saturday</option>
-                </select>
-            </div>
-            <div class = "search-user">
-                <input type = "textbox" placeholder = "Search Slot">
-            </div>
-            <div id="reservation-calendar">
-             
+            <img src="{{user.profilePic}}">
         </div>
     </div>
-    <script src="/js/reservations.js">
-        const currentUser = {
-            name: "{{name}}"
-        }
-    </script>
+    <div class="content">
+        <div class="sidebar">
+            <div class="nav"><a href="dashboard">Dashboard</a></div>
+            <div class="nav"><a href="laboratories">Laboratories</a></div>
+            <div class="nav" id="dashboard-nav">Reservations</div>
+        </div>
+
+        <div class="container">
+            <div class="reservation-section">
+                <h2>Seat Reservations</h2>
+                <div class="week-selector">
+                    <button class="btn-secondary">Previous Week</button>
+                    <span id="week-display"></span>
+                    <button class="btn-secondary">Next Week</button>
+                </div>
+
+                <div class="filter-section">
+                    <label>Filter by Day:</label>
+                    <select id="day-filter">
+                        <option value="all">All</option>
+                        <option value="Mon">Monday</option>
+                        <option value="Tues">Tuesday</option>
+                        <option value="Wed">Wednesday</option>
+                        <option value="Thurs">Thursday</option>
+                        <option value="Fri">Friday</option>
+                        <option value="Sat">Saturday</option>
+                    </select>
+                </div>
+                <div class="search-user">
+                    <input type="textbox" placeholder="Search Slot">
+                </div>
+                <div id="reservation-calendar"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/reservations.js"></script>
 </body>
 </html>
-
-
-

@@ -1,4 +1,4 @@
- const express = require("express");
+const express = require("express");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const path = require("path");
@@ -74,8 +74,8 @@ app.get("/dashboard", isAuthenticated, async (req,res) => {
 });
 
 app.get("/editprofile", isAuthenticated, async (req,res) => {
-    const fullUser = await User.findOne({ username: req.session.user.username }).lean();
-    res.render("editprofile", { user: fullUser || req.session.user });
+    const fullUser = await User.findOne({ username: req.session.user }).lean();
+    res.render("editprofile", { user: fullUser });
 });
 
 app.get("/laboratories", isAuthenticated, async (req,res) => {   
@@ -91,15 +91,18 @@ app.get("/laboratories", isAuthenticated, async (req,res) => {
     }); 
 });
 
-app.post("/editprofile", isAuthenticated, async (req, res) => {
-    const updates = req.body;
-    await User.findOneAndUpdate({ username: req.session.user.username }, updates, { upsert: true });
-    res.redirect("/dashboard");
-});
 
 app.post("/editprofile", isAuthenticated, async (req, res) => {
-    const updates = req.body;
-    await User.findOneAndUpdate({ username: req.session.user.username }, updates, { upsert: true });
+    const { name, email, bio, schoolYear, birthday, college, course, profilePic } = req.body;
+    const updates = { name, email, bio, schoolYear, birthday, college, course };
+    if (profilePic && profilePic.trim() !== "") {
+        updates.profilePic = profilePic;
+    }
+    await User.findOneAndUpdate(
+        { username: req.session.user },
+        updates,
+        { new: true }
+    );
     res.redirect("/dashboard");
 });
 
@@ -114,12 +117,11 @@ app.get("/reservation", isAuthenticated, async (req,res) => {
 
 app.get("/view-reservations", isAuthenticated, async (req,res) => {  
     const Reservation = require("./models/reservations");             
-    const User = require("./models/user");                            
-    const user = await User.findOne({ username: req.session.user });  
-    const reservations = await Reservation.find({ userId: user._id });
+    const currentUser = await User.findOne({ username: req.session.user });  
+    const reservations = await Reservation.find({ userId: currentUser._id });
     res.render("view-reservations", {
         username: req.session.user,
-        user: currentUser,
+        user: currentUser.toObject(),
         reservations: reservations.map(r => r.toObject()) 
     }); 
 });

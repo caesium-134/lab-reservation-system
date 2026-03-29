@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Profile</title>
+  <title>Edit Profile - Lab Reservation System</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="src/favicon.png">
 </head>
 <body class="edit-profile-page">
   <div class="edit-profile-container">
     <h1>Edit Profile</h1>
-<form action="/editprofile" method="POST" enctype="multipart/form-data" class="edit-profile-form">
+    <form action="/editprofile" method="POST" class="edit-profile-form">
+
       <div class="profile-picture-section">
         <label for="profile-picture">Profile Picture</label>
         <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
         <input type="hidden" id="profilePicBase64" name="profilePic">
         <div class="current-picture">
-          <img src="{{user.profilePic}}" alt="Current Profile Picture" id="current-pic">
+          <img src="{{user.profilePic}}" alt="Current Profile Picture" id="current-pic" style="width:100px; height:100px; border-radius:50%; object-fit:cover;">
         </div>
       </div>
 
       <div class="basic-info-section">
         <h2>Basic Information</h2>
-        <label for="id-number">ID Number</label>
-        <input type="text" class = "edit-profile-txt" id="id-number" name="id-number" value="{{user.idNumber}}" readonly>
-        <input type="email" class = "edit-profile-txt" id="email" name="email" value="{{user.email}}">
+
+        <label for="idNumber">ID Number</label>
+        <input type="text" class="edit-profile-txt" id="idNumber" name="idNumber" value="{{user.idNumber}}" readonly>
+
+        <label for="email">Email</label>
+        <input type="email" class="edit-profile-txt" id="email" name="email" value="{{user.email}}">
 
         <label for="name">Name</label>
-        <input type="text" class = "edit-profile-txt" id="name" name="name" value="{{user.name}}">
+        <input type="text" class="edit-profile-txt" id="name" name="name" value="{{user.name}}">
 
         <label for="bio">Bio</label>
         <textarea id="bio" name="bio" rows="4">{{user.bio}}</textarea>
@@ -34,20 +39,21 @@
 
       <div class="stats-section">
         <h2>Additional Details</h2>
-        <label for="school-year">School Year</label>
-        <select class = "edit-profile-select" id="school-year" name="school-year">
-          <option value="1st Year" {{#eq ../user.schoolYear "1st Year"}}selected{{/eq}}>1st Year</option>
-          <option value="2nd Year" {{#eq ../user.schoolYear "2nd Year"}}selected{{/eq}}>2nd Year</option>
-          <option value="3rd Year" {{#eq ../user.schoolYear "3rd Year"}}selected{{/eq}}>3rd Year</option>
-          <option value="4th Year" {{#eq ../user.schoolYear "4th Year"}}selected{{/eq}}>4th Year</option>
-          <option value="5th Year" {{#eq ../user.schoolYear "5th Year"}}selected{{/eq}}>5th Year</option>
+
+        <label for="schoolYear">School Year</label>
+        <select class="edit-profile-select" id="schoolYear" name="schoolYear">
+          <option value="1st Year" {{#eq user.schoolYear "1st Year"}}selected{{/eq}}>1st Year</option>
+          <option value="2nd Year" {{#eq user.schoolYear "2nd Year"}}selected{{/eq}}>2nd Year</option>
+          <option value="3rd Year" {{#eq user.schoolYear "3rd Year"}}selected{{/eq}}>3rd Year</option>
+          <option value="4th Year" {{#eq user.schoolYear "4th Year"}}selected{{/eq}}>4th Year</option>
+          <option value="5th Year" {{#eq user.schoolYear "5th Year"}}selected{{/eq}}>5th Year</option>
         </select>
 
         <label for="birthday">Birthday</label>
-        <input type="date" class = "edit-profile-date" id="birthday" name="birthday" value="{{user.birthday}}">
+        <input type="date" class="edit-profile-date" id="birthday" name="birthday" value="{{user.birthday}}">
 
         <label for="college">College</label>
-        <select class= "edit-profile-select" id="college" name="college">
+        <select class="edit-profile-select" id="college" name="college">
           <option value="">Select College</option>
           <option value="COLLEGE OF COMPUTER STUDIES" {{#eq user.college "COLLEGE OF COMPUTER STUDIES"}}selected{{/eq}}>COLLEGE OF COMPUTER STUDIES</option>
           <option value="BR. ANDREW GONZALEZ COLLEGE OF EDUCATION" {{#eq user.college "BR. ANDREW GONZALEZ COLLEGE OF EDUCATION"}}selected{{/eq}}>BR. ANDREW GONZALEZ COLLEGE OF EDUCATION</option>
@@ -59,7 +65,7 @@
         </select>
 
         <label for="course">Course</label>
-        <select class = "edit-profile-select"id="course" name="course">
+        <select class="edit-profile-select" id="course" name="course">
           <option value="">Select Course</option>
         </select>
       </div>
@@ -73,11 +79,36 @@
 
   <script>
     const courses = {
-      // ... same courses dict unchanged ...
+      "COLLEGE OF COMPUTER STUDIES": [
+        "Computer Science", "Information Technology", "Computer Engineering"
+      ],
+      "BR. ANDREW GONZALEZ COLLEGE OF EDUCATION": [
+        "Secondary Education", "Elementary Education"
+      ],
+      "COLLEGE OF LIBERAL ARTS": [
+        "Communication", "Filipino", "History", "Legal Management",
+        "Literature", "Philosophy", "Political Science", "Psychology", "Sociology"
+      ],
+      "COLLEGE OF SCIENCE": [
+        "Biology", "Chemistry", "Mathematics", "Physics", "Statistics"
+      ],
+      "GOKONGWEI COLLEGE OF ENGINEERING": [
+        "Chemical Engineering", "Civil Engineering", "Computer Engineering",
+        "Electronics Engineering", "Industrial Engineering",
+        "Manufacturing Engineering", "Mechanical Engineering"
+      ],
+      "RAMON V. DEL ROSARIO COLLEGE OF BUSINESS": [
+        "Accountancy", "Business Administration", "Commercial Law",
+        "Entrepreneurship", "Management of Financial Institutions"
+      ],
+      "CARLOS L. TIU SCHOOL OF ECONOMICS": [
+        "Economics"
+      ]
     };
 
     const collegeSelect = document.getElementById('college');
     const courseSelect = document.getElementById('course');
+    const savedCourse = "{{user.course}}";
 
     // Image preview and base64 to hidden field
     document.getElementById("profile-picture").addEventListener("change", function () {
@@ -91,24 +122,27 @@
       reader.readAsDataURL(file);
     });
 
-    // College change populates courses
-    collegeSelect.addEventListener('change', function() {
-      const selectedCollege = this.value;
+    // Populate courses when college changes
+    function populateCourses(selectedCollege) {
       courseSelect.innerHTML = '<option value="">Select Course</option>';
       if (selectedCollege && courses[selectedCollege]) {
         courses[selectedCollege].forEach(course => {
           const option = document.createElement('option');
           option.value = course;
           option.textContent = course;
+          if (course === savedCourse) option.selected = true;
           courseSelect.appendChild(option);
         });
       }
+    }
+
+    collegeSelect.addEventListener('change', function () {
+      populateCourses(this.value);
     });
 
-    // On load, populate course options if college selected
+    // On load, populate courses for the already-selected college
     document.addEventListener("DOMContentLoaded", function () {
-      collegeSelect.dispatchEvent(new Event('change'));
-      courseSelect.value = "{{user.course}}"; // set if matches
+      populateCourses(collegeSelect.value);
     });
   </script>
 </body>
