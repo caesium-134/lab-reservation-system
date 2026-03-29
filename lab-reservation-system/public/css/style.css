@@ -1205,4 +1205,40 @@ input[type="file"] {
   }
 }
 
+.row-edit-btn {
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.row-edit-btn:hover {
+    background: rgb(12, 217, 12);
+    transform: translateY(-2px);
+}
+
+.row-delete-btn {
+    background: darkred;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-delete-btn:hover {
+    background: red;
+    transform: translateY(-2px);
+}

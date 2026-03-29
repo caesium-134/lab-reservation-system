@@ -43,6 +43,8 @@
                             <th>Date</th>
                             <th>Time</th>
                             <th>Status</th>
+                            <th style="text-align:center;">Edit</th>
+                            <th style="text-align:center;">Delete</th>
                         </tr>
                         {{#each reservations}}
                         <tr>
@@ -51,19 +53,36 @@
                             <td>{{this.date}}</td>
                             <td>{{this.time}}</td>
                             <td>{{this.status}}</td>
+                            <td style="text-align:center;">
+                                <button class="row-edit-btn" onclick="editReservation('{{this._id}}')">&#x2217;</button>
+                            </td>
+                            <td style="text-align:center;">
+                                <button class="row-delete-btn" onclick="confirmDelete('{{this._id}}', '{{this.lab}}', '{{this.seat_name}}', '{{this.date}}', '{{this.time}}')">&#x2212;</button>
+                            </td>
                         </tr>
                         {{else}}
                         <tr>
-                            <td colspan="5">No reservations found.</td>
+                            <td colspan="7">No reservations found.</td>
                         </tr>
                         {{/each}}
                     </table>
 
                     <footer class="view-reservation-footer">
                         <button class="view-add-btn" onclick="window.location.href='/reservation'">Add</button>
-                        <button class="view-edit-btn">Edit</button>
-                        <button class="view-delete-btn">Delete</button>
                     </footer>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+            <div style="background:white; border-radius:8px; padding:32px; max-width:400px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+                <h3 style="margin:0 0 10px 0; color:#333;">Cancel Reservation</h3>
+                <p style="color:#555; margin:0 0 16px 0;">Are you sure you want to cancel this reservation?</p>
+                <div id="deleteModalDetails" style="background:#f5f5f5; border-radius:6px; padding:12px; margin-bottom:20px; font-size:14px; line-height:1.8;"></div>
+                <div style="display:flex; gap:10px; justify-content:flex-end;">
+                    <button onclick="closeDeleteModal()" style="padding:10px 20px; border:none; border-radius:6px; background:#e4e6ea; color:#333; font-size:14px; cursor:pointer;">Keep It</button>
+                    <button id="confirmDeleteBtn" style="padding:10px 20px; border:none; border-radius:6px; background:darkred; color:white; font-size:14px; cursor:pointer; font-weight:bold;">Yes, Cancel</button>
                 </div>
             </div>
         </div>
@@ -71,6 +90,52 @@
         <script>
             document.getElementById("logout").addEventListener("click", function() {
                 window.location.href = "/logout";
+            });
+
+            let reservationToDelete = null;
+
+            function confirmDelete(id, lab, seat, date, time) {
+                reservationToDelete = id;
+                document.getElementById("deleteModalDetails").innerHTML = `
+                    <strong>Lab:</strong> ${lab}<br>
+                    <strong>Seat:</strong> ${seat}<br>
+                    <strong>Date:</strong> ${date}<br>
+                    <strong>Time:</strong> ${time}
+                `;
+                const modal = document.getElementById("deleteModal");
+                modal.style.display = "flex";
+
+                document.getElementById("confirmDeleteBtn").onclick = async function() {
+                    try {
+                        const res = await fetch(`/reservation/${reservationToDelete}`, {
+                            method: "DELETE"
+                        });
+                        const result = await res.json();
+                        if (result.success) {
+                            closeDeleteModal();
+                            window.location.reload();
+                        } else {
+                            alert("Failed to delete reservation: " + result.message);
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert("Server error while deleting.");
+                    }
+                };
+            }
+
+            function closeDeleteModal() {
+                document.getElementById("deleteModal").style.display = "none";
+                reservationToDelete = null;
+            }
+
+            function editReservation(id) {
+                alert("WIP");
+            }
+
+            // Close modal if clicking outside
+            document.getElementById("deleteModal").addEventListener("click", function(e) {
+                if (e.target === this) closeDeleteModal();
             });
         </script>
     </body>
