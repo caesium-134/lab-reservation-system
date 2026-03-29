@@ -1,15 +1,19 @@
 const User = require("../models/user");
 
 exports.login = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, rememberMe } = req.body;
 
     const foundUser = await User.findOne({ username, password });
 
-    if(foundUser){
+    if (foundUser) {
         req.session.user = foundUser.username;
+        if (rememberMe) {
+            req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 21;
+        } else {
+            req.session.cookie.expires = false;
+        }
         res.redirect("/dashboard");
-    }
-    else{
+    } else {
         res.send("Invalid Login");
     }
 };

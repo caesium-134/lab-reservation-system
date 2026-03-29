@@ -29,13 +29,14 @@
             async function login(){
                 const username = document.getElementById("username").value.trim();
                 const password = document.getElementById("password").value;
+                const rememberMe = document.querySelector(".remember-me-btn").checked;
                 const error = document.getElementById("login-error");
 
                 try{
                     const response = await fetch("/index", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ username, password })
+                        body: JSON.stringify({ username, password, rememberMe })
                     });
 
                     if(response.redirected){

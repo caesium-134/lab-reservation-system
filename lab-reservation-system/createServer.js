@@ -28,7 +28,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true
     }
 }));
@@ -41,6 +40,10 @@ app.post("/index", authController.login);
 
 function isAuthenticated(req, res, next) {
     if (req.session.user) {
+        // If they have a persistent cookie (remember me), extend it by 3 weeks on every visit
+        if (req.session.cookie.maxAge) {
+            req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 21;
+        }
         next();
     } else {
         res.redirect("/index");
@@ -148,6 +151,33 @@ app.get("/view-reservations", isAuthenticated, async (req, res) => {
         user: currentUser.toObject(),
         reservations: reservations.map(r => r.toObject())
     });
+});
+
+// ─── Edit Reservation ─────────────────────────────────────────────────────────
+app.put("/reservation/:id", isAuthenticated, async (req, res) => {
+    try {
+        const currentUser = await User.findOne({ username: req.session.user });
+        const reservation = await Reservation.findById(req.params.id);
+
+        if (!reservation) {
+            return res.status(404).json({ success: false, message: "Reservation not found." });
+        }
+
+        if (reservation.userId.toString() !== currentUser._id.toString()) {
+            return res.status(403).json({ success: false, message: "You can only edit your own reservations." });
+        }
+
+        const { date, time, lab } = req.body;
+        reservation.date = date;
+        reservation.time = time;
+        reservation.lab  = lab;
+        await reservation.save();
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Server error." });
+    }
 });
 
 // ─── Delete Reservation ───────────────────────────────────────────────────────

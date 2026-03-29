@@ -56,7 +56,7 @@
                             <td>{{this.requestDate}}</td>
                             <td>{{this.status}}</td>
                             <td style="text-align:center;">
-                                <button class="row-edit-btn" onclick="editReservation('{{this._id}}')">&#x2217;</button>
+                                <button class="row-edit-btn" onclick="openEditModal('{{this._id}}', '{{this.lab}}', '{{this.date}}', '{{this.time}}')">&#x2217;</button>
                             </td>
                             <td style="text-align:center;">
                                 <button class="row-delete-btn" onclick="confirmDelete('{{this._id}}', '{{this.lab}}', '{{this.seat_name}}', '{{this.date}}', '{{this.time}}')">&#x2212;</button>
@@ -72,6 +72,40 @@
                     <footer class="view-reservation-footer">
                         <button class="view-add-btn" onclick="window.location.href='/reservation'">Add</button>
                     </footer>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Reservation Modal -->
+        <div id="editModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+            <div style="background:white; border-radius:8px; padding:32px; max-width:400px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+                <h3 style="margin:0 0 20px 0; color:#333;">Edit Reservation</h3>
+                <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+                    <div>
+                        <label style="font-size:13px; color:#555;">Lab</label>
+                        <select id="edit-lab" style="width:100%; padding:8px; margin-top:4px; border:1px solid #ddd; border-radius:6px;">
+                            <option value="Computer Lab A">Computer Lab A</option>
+                            <option value="Computer Lab B">Computer Lab B</option>
+                            <option value="Chemistry Lab A">Chemistry Lab A</option>
+                            <option value="Chemistry Lab B">Chemistry Lab B</option>
+                            <option value="Biology Lab A">Biology Lab A</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size:13px; color:#555;">Date</label>
+                        <input type="date" id="edit-date" style="width:100%; padding:8px; margin-top:4px; border:1px solid #ddd; border-radius:6px; box-sizing:border-box;">
+                    </div>
+                    <div>
+                        <label style="font-size:13px; color:#555;">Time</label>
+                        <select id="edit-time" style="width:100%; padding:8px; margin-top:4px; border:1px solid #ddd; border-radius:6px;">
+                            <option value="7:30 - 9:00">7:30 - 9:00</option>
+                            <option value="11:00 - 12:30">11:00 - 12:30</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display:flex; gap:10px; justify-content:flex-end;">
+                    <button onclick="closeEditModal()" style="padding:10px 20px; border:none; border-radius:6px; background:#e4e6ea; color:#333; font-size:14px; cursor:pointer;">Cancel</button>
+                    <button id="saveEditBtn" style="padding:10px 20px; border:none; border-radius:6px; background:#4a90d9; color:white; font-size:14px; cursor:pointer; font-weight:bold;">Save</button>
                 </div>
             </div>
         </div>
@@ -131,9 +165,52 @@
                 reservationToDelete = null;
             }
 
-            function editReservation(id) {
-                alert("WIP");
+            let reservationToEdit = null;
+
+            function openEditModal(id, lab, date, time) {
+                reservationToEdit = id;
+                document.getElementById("edit-lab").value   = lab;
+                document.getElementById("edit-date").value  = date;
+                document.getElementById("edit-time").value  = time;
+                document.getElementById("editModal").style.display = "flex";
             }
+
+            function closeEditModal() {
+                document.getElementById("editModal").style.display = "none";
+                reservationToEdit = null;
+            }
+
+            document.getElementById("saveEditBtn").addEventListener("click", async function() {
+                const lab  = document.getElementById("edit-lab").value;
+                const date = document.getElementById("edit-date").value;
+                const time = document.getElementById("edit-time").value;
+
+                if (!lab || !date || !time) {
+                    alert("All fields are required.");
+                    return;
+                }
+
+                try {
+                    const res = await fetch(`/reservation/${reservationToEdit}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ lab, date, time })
+                    });
+                    const result = await res.json();
+                    if (result.success) {
+                        closeEditModal();
+                        window.location.reload();
+                    } else {
+                        alert("Failed to update: " + result.message);
+                    }
+                } catch (err) {
+                    alert("Server error while saving.");
+                }
+            });
+
+            document.getElementById("editModal").addEventListener("click", function(e) {
+                if (e.target === this) closeEditModal();
+            });
 
             document.getElementById("deleteModal").addEventListener("click", function(e) {
                 if (e.target === this) closeDeleteModal();
