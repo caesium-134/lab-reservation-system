@@ -1,34 +1,39 @@
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>Lab Reservation</title>
-        <link rel="stylesheet" href="css/style.css"> 
         <title>Lab Reservation System</title>
+        <link rel="stylesheet" href="css/style.css"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="icon" type="image/x-icon" href="src/favicon.png">
     </head>
     <body> 
-        <div class = "header">
-            <div class = "header-left">
+        <div class="header">
+            <div class="header-left">
                 Lab Reservation System
             </div>
-
-            <div class = "header-right">
-                <div class = "username">
-                    Geoffrey Elton
+            <div class="header-right">
+                <div class="username">
+                    {{user.name}}
                 </div>
-                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsIKSMW9Ul2g-X5JYNNGZlKYAapvSFKx_7g&s">
+                <img src="{{user.profilePic}}">
+                <div id="logout">
+                    Logout
+                    <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                </div>
             </div>
         </div>
-        <div class = "content">
-            <div class = "sidebar">
-                <div class = "nav"><a href="dashboard">Dashboard</a></div>
-                <div class = "nav" id="dashboard-nav">Laboratories</div>
-                <div class = "nav"><a href="reservation">Reservations</a></div>
+
+        <div class="content">
+            <div class="sidebar">
+                <div class="nav"><a href="dashboard">Dashboard</a></div>
+                <div class="nav" id="dashboard-nav">Laboratories</div>
+                <div class="nav"><a href="reservation">Reservations</a></div>
             </div>
         
             <div class="lab-container">
-                <div clas="lab-header">
+                <div class="lab-header">
                     <h1>Laboratories</h1>
                     <p>Browse through all the available labs.</p>
                 </div>
@@ -43,9 +48,11 @@
 
                 <div class="card-container-wrapper">
                 {{#each labs}}
-                <div class="card-container"> 
-                    <div class="card-header {{#if (eq status 'Available')}}card-available{{else}}card-unavailable{{/if}}"> 
+                <div class="card-container" data-status="{{status}}"> 
+                    <div class="card-header {{#eq status 'available'}}card-available{{/eq}}"> 
                         <h1><a href="/reservation">{{name}}</a></h1>
+                        <h5>Room: {{room}}</h5>
+                        <h5>Capacity: {{capacity}} seats</h5>
                         <h5>Status: {{status}}</h5>
                     </div>
                     <div class="card-description"> 
@@ -53,18 +60,29 @@
                     </div>
                     <img src="{{image}}">
                 </div>
-                </br></br>
+                <br><br>
                 {{/each}}
                 </div>
-                 
             </div>
-
         </div>
 
-    </body>
-    <script>
+        <script>
             document.getElementById("logout").addEventListener("click", function() {
-        window.location.href = "index";
-    });
-    </script>
-</html> 
+                window.location.href = "/logout";
+            });
+
+            document.getElementById("avail-filter").addEventListener("change", function() {
+                const value = this.value;
+                const cards = document.querySelectorAll(".card-container");
+                cards.forEach(card => {
+                    const status = card.getAttribute("data-status");
+                    if (value === "all" || status === value) {
+                        card.style.display = "";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
