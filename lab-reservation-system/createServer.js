@@ -115,6 +115,43 @@ app.get("/reservation", isAuthenticated, async (req,res) => {
     });
 });
 
+app.get("/api/reservations", isAuthenticated, async (req, res) => {
+    const Reservation = require("./models/reservations");
+    const reservations = await Reservation.find({}).populate("userId", "name").lean();
+    const formatted = reservations.map(r => ({
+        date:     r.date,
+        timeslot: r.time,
+        seat:     parseInt(r.seat_name.replace("Seat ", "")),
+        user:     r.anonymous ? "Anonymous" : (r.userId?.name || "Unknown")
+    }));
+    res.json(formatted);
+});
+
+app.post("/reservation", isAuthenticated, async (req, res) => {
+    try {
+        const Reservation = require("./models/reservations");
+        const currentUser = await User.findOne({ username: req.session.user });
+
+        const { date, timeslot, seat, lab, anonymous } = req.body;
+
+        const newReservation = new Reservation({
+            userId:    currentUser._id,
+            seat_name: `Seat ${seat}`,
+            lab:       lab || "Computer Lab",
+            date:      date,
+            time:      timeslot,
+            anonymous: anonymous === "true",
+            status:    "active"
+        });
+
+        await newReservation.save();
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Failed to save reservation." });
+    }
+});
+
 app.get("/view-reservations", isAuthenticated, async (req,res) => {  
     const Reservation = require("./models/reservations");             
     const currentUser = await User.findOne({ username: req.session.user });  

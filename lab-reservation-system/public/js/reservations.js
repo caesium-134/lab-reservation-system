@@ -1,6 +1,5 @@
 let currentWeekOffset = 0;
 let selectedSlot = null;
-const confirmedReservations = [];
 
 function getCurrentUser() {
     return { id: 1, name: currentUser.name };
@@ -33,17 +32,26 @@ async function getReserveDays() {
 }
 
 async function getReservations() {
-    return confirmedReservations;
+    try {
+        const res = await fetch("/api/reservations");
+        if (!res.ok) return [];
+        return await res.json();
+    } catch (e) {
+        return [];
+    }
 }
 
 async function createReservation(data) {
-        confirmedReservations.push({
-        date:     data.date,
-        timeslot: data.timeslot,
-        seat:     data.seat,
-        user:     getCurrentUser().name
-    });
-    return { success: true };
+    try {
+        const res = await fetch("/reservation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        return await res.json();
+    } catch (e) {
+        return { success: false };
+    }
 }
 
 function getWeekDates(offset) {

@@ -9,6 +9,7 @@ async function seedDB() {
     try {
         await User.deleteMany({});
         await Laboratory.deleteMany({});
+        await Reservation.deleteMany({});
 
         await User.insertMany([
             {
