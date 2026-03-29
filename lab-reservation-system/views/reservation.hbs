@@ -24,7 +24,54 @@
             <div class="username">
                 {{user.name}}
             </div>
-            <img src="{{user.profilePic}}">
+
+    <div class="container">
+        
+        <div class="reservation-section">
+            
+            <h2>Seat Reservations</h2>
+            
+            <div class="week-selector">
+                <button onclick="changeWeek(-1)" class="btn-secondary">Previous Week</button>
+                <span id="week-display"></span>
+                <button onclick="changeWeek(1)" class="btn-secondary">Next Week</button>
+            </div>
+
+            <div class="filter-section">
+                <label> Search Slot:</label>
+                <select id="lab-filter">
+                    <option value="lab">Laboratory</option>
+                    <option value="lab1">Lab 1</option>
+                    <option value="lab2">Lab 2</option>
+                    <option value="lab3">Lab 3</option>
+                </select>
+                <select id="day-filter">
+                    <option value="all-day">Day</option>
+                    <option value="Mon">Monday</option>
+                    <option value="Tues">Tuesday</option>
+                    <option value="Wed">Wednesday</option>
+                    <option value="Thurs">Thursday</option>
+                    <option value="Fri">Friday</option>
+                    <option value="Sat">Saturday</option>
+                </select>
+                <select id="time-filter">
+                    <option value="all-time">Time</option>
+                    <option value="time1">7:30 - 9:00 am</option>
+                    <option value="time2">11:00 - 12:30 pm</option>
+                </select>
+            </div>
+            <label>
+                Reserve anonymously
+                <input type="checkbox" id="anonymous-toggle">
+            </label>
+             
+            <br> 
+            
+            <div class="laboratory-section">
+                <h1>Computer Lab A</h1>
+            </div>
+            
+            <div id="reservation-calendar"></div>              
         </div>
     </div>
     <div class="content">
