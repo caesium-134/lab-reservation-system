@@ -946,6 +946,10 @@ input[type="radio"] { display: none; }
 .seat-cb:checked ~ .booking-modal { display: flex; }
 
 /* laboratories.html */
+.content{
+    background: whitesmoke; 
+}
+
 .lab-container{
     width: 100%; 
     padding: 20px 10px 10px 30px;
@@ -954,7 +958,7 @@ input[type="radio"] { display: none; }
 .card-container{
     display: column; 
     margin: 0 auto; 
-    height: 500px; 
+    height: 35vw; 
     background: whitesmoke; 
     width: 50%;
     padding: 10px 10px 10px 30px;
