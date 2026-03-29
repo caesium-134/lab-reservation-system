@@ -11,7 +11,7 @@ async function seedDB() {
         await Laboratory.deleteMany({});
         await Reservation.deleteMany({});
 
-        await User.insertMany([
+        const users = await User.insertMany([
             {
                 username: "jvalerio",
                 password: "1234",
@@ -84,7 +84,7 @@ async function seedDB() {
             },
         ]);
 
-        await Laboratory.insertMany([
+        const lab = await Laboratory.insertMany([
             {
                 name: "Computer Lab A",
                 room: "G305",
@@ -125,6 +125,55 @@ async function seedDB() {
                 status: "available",
                 image: "https://biology.columbia.edu/sites/biology.columbia.edu/files/styles/cu_crop/public/content/New%20labs%20photo%20for%20website%20r.jpg?itok=ZGJY0ZQI",
             }
+        ]);
+ 
+        await Reservation.insertMany([
+            {
+                userId:      users[0]._id,          // jvalerio (1)
+                seat_name:   "Seat 01",
+                lab:         "Computer Lab A",
+                date:        "2026-04-01",
+                time:        "7:30 - 9:00",
+                anonymous:   false,
+                status:      "active"
+            },
+            {
+                userId:      users[1]._id,          // dylanpena (2)
+                seat_name:   "Seat 10",
+                lab:         "Computer Lab A",
+                date:        "2026-04-01",
+                time:        "11:00 - 12:30",
+                anonymous:   false,
+                status:      "active"
+            },
+            {
+                userId:      users[2]._id,          // jacque (3)
+                seat_name:   "Seat 05",
+                lab:         "Computer Lab A",
+                date:        "2026-03-30",
+                time:        "7:30 - 9:00",
+                anonymous:   true,                  // anonymous reservation
+                status:      "active"
+            },
+            {
+                userId:      users[0]._id,          // jvalerio (4)
+                seat_name:   "Seat 02",
+                lab:         "Computer Lab A",
+                date:        "2026-04-02",
+                time:        "7:30 - 9:00",
+                anonymous:   true,                  // anonymous reservation
+                status:      "active"
+            },
+            {
+                userId:      users[1]._id,          // dylanpena (5)
+                seat_name:   "Seat 10",
+                lab:         "Computer Lab A",
+                date:        "2026-04-01",
+                time:        "7:30 - 9:00",
+                anonymous:   false,
+                status:      "active"
+            }
+
         ]);
 
         console.log("Database seeded successfully");
