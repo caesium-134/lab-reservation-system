@@ -728,7 +728,6 @@ input[type="radio"] { display: none; }
     background: white;
     padding: 15px;
     border-radius: 10px;
-    margin-bottom: 20px;
 }   
 
 .filter-section select {
