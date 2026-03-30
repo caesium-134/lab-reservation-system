@@ -1070,13 +1070,13 @@ input[type="radio"] { display: none; }
     flex-direction: column;
     align-items: left;
     padding: 25px;
-    height: 70vh;
-    width: 360px;
+    height: 82vh;
+    width: 53vh;
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     margin: 20px;
-    background: white; 
+    background: whitesmoke; 
 }
 
 .register-text-field, .register-submit-btn{
@@ -1096,7 +1096,13 @@ input[type="radio"] { display: none; }
     border-radius: 30px;
     background-color: darkblue;
     color: white;
+    height: 55px;
     margin-top: 20px;
+    padding: 10px 20px;
+}
+
+.not-allowed{
+    cursor: not-allowed; 
 }
 
 .edit-profile-page {
