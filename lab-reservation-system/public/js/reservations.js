@@ -19,12 +19,12 @@ async function getReserveDays() {
 
         days.push({
             date: fmt(d),
-            timeslot: '7:30 - 9:00',
+            timeslot: '7:30 - 8:00',
             available_seats: { A: [1,2,3,4,5,6,7,8,9], B: [10,11,12,13,14,15,16,17,18]}
         });
         days.push({
             date: fmt(d),
-            timeslot: '11:00 - 12:30',
+            timeslot: '11:00 - 11:30',
             available_seats: { A: [1,2,3,4,5,6,7,8,9], B: [10,11,12,13,14,15,16,17,18] }
         });
     }
