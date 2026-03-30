@@ -156,7 +156,6 @@ app.get("/view-reservations", async (req, res) => {
 
         let reservations = await Reservation.find({ userId: userIdToFetch });
 
-        // attach user info
         const userIds = reservations.map(r => r.userId);
         const users = await User.find({ _id: { $in: userIds } });
 
