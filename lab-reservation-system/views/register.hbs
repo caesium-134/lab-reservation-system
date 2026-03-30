@@ -1,31 +1,37 @@
 <html>
     <head>
-        <link href = "css/style.css" rel = "stylesheet" type = "text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
         <title>Lab Reservation System</title>
         <link rel="icon" type="image/x-icon" href="src/favicon.png">
     </head>
     <body>
-         <div class = "login-header header">
+         <div class= "login-header header">
             <div class="header-left"><h3>Lab Reservation System</h3></div>
         </div>
-        <div class = "register-content">
+        <div class= "register-content">
             <div class = "register-container">
                 <h1>Register</h1>
-                <input type = "text" id = "email" placeholder = "Email" class = "register-text-field">
-                <input type = "text" id = "username" placeholder = "Username" class = "register-text-field">
-                <input type = "password" id = "password" placeholder = "Password" class = "register-text-field">
-                <input type = "password" id = "confirmPassword" placeholder = "Confirm Password" class = "register-text-field">
-                <button type = "button" class = "register-submit-btn" onclick="registerUser()">Register</button>
                 <p id="register-error" style="color:red; display:none;"></p>
+                <input type="text" id="email" placeholder="Email" class="register-text-field">
+                <input type="text" id ="username" placeholder="Username" class="register-text-field">
+                <input type="password" id="password" placeholder="Password" class="register-text-field">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" class="register-text-field">
+                <button type="button" class="register-submit-btn" onclick="registerUser()">Register</button>
+                <p class = "login-help" id = "register-help">Already have an account? <a href = "/index">Sign in.</a></p>
+                <p class = "login-help" id = "email-help">For inquiries contact support.lrs@gmail.com</p>
             </div>
         </div>
-        <p class = "login-help" id = "email-help">For inquiries contact support.lrs@gmail.com</p>
         <div class = "login-footer">
             <p>Lab Reservation System</p><a href = "/index">Dashboard</a><a href = "/index">Laboratories</a><a href = "/index">Reservation</a> 
         </div>
     </body>
 
     <script>
+        function valid(email) {
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(email);
+        }
+         
         async function registerUser(){
             const username = document.getElementById("username").value.trim();
             const email = document.getElementById("email").value.trim();
@@ -45,6 +51,12 @@
                 error.style.display = "block";
                 error.innerText = "Passwords do not match.";
                 return;
+            }
+
+            if(!valid(email)){
+                error.style.display = "block";
+                error.innerText = "Invalid email address.";
+                return;  
             }
 
             try{
