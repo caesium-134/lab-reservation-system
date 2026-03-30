@@ -20,7 +20,7 @@ async function seedDB() {
                 password: hashed,
                 idNumber: "12412394",
                 name: "Joaquin Valerio",
-                email: "jqvalerio@gmail.com",
+                email: "jqvalerio@dlsu.edu.ph",
                 bio: "What's up! I'm Joaquin. I'm a Legal Management major studying in De La Salle University.",
                 schoolYear: "2nd Year",
                 birthday: "2005-02-14",
@@ -34,7 +34,7 @@ async function seedDB() {
                 password: hashed,
                 idNumber: "12455857",
                 name: "Dylan Penalotha",
-                email: "dylanpenalotha@gmail.com",
+                email: "dylanpenalotha@dlsu.edu.ph",
                 bio: "Hi! I'm Dylan. I enjoy programming and working on web applications.",
                 schoolYear: "2nd Year",
                 birthday: "2004-07-21",
@@ -48,7 +48,7 @@ async function seedDB() {
                 password: hashed,
                 idNumber: "12212586",
                 name: "Jacque Tamainta",
-                email: "jacquet@gmail.com",
+                email: "jacquet@dlsu.edu.ph",
                 bio: "Hey, I'm Jacque. I love playing the guitar and making movies.",
                 schoolYear: "3rd Year",
                 birthday: "2005-02-14",
@@ -62,7 +62,7 @@ async function seedDB() {
                 password: hashed,
                 idNumber: "12144598",
                 name: "Qings Z. Valli",
-                email: "qingsvallireal@gmail.com",
+                email: "qingsvallireal@dlsu.edu.ph",
                 bio: "Yo! I'm Qings and I'm an aspiring Teacher.",
                 schoolYear: "4th Year",
                 birthday: "2005-02-14",
@@ -76,7 +76,7 @@ async function seedDB() {
                 password: hashed,
                 idNumber: "12524242",
                 name: "Clair Enotrill",
-                email: "big2026@gmail.com",
+                email: "big2026@dlsu.edu.ph",
                 bio: "What is up!!!!! I'm Clair and I'm an aspiring musician, but I'm currently taking Accounting",
                 schoolYear: "1st Year",
                 birthday: "2006-12-11",
@@ -136,7 +136,7 @@ async function seedDB() {
                 seat_name:   "Seat 01",
                 lab:         "Computer Lab A",
                 date:        "2026-04-01",
-                time:        "7:30 - 9:00",
+                time:        "7:30 - 8:00",
                 anonymous:   false,
                 status:      "active"
             },
@@ -145,7 +145,7 @@ async function seedDB() {
                 seat_name:   "Seat 10",
                 lab:         "Computer Lab A",
                 date:        "2026-04-01",
-                time:        "11:00 - 12:30",
+                time:        "11:00 - 11:30",
                 anonymous:   false,
                 status:      "active"
             },
@@ -154,7 +154,7 @@ async function seedDB() {
                 seat_name:   "Seat 05",
                 lab:         "Computer Lab A",
                 date:        "2026-03-30",
-                time:        "7:30 - 9:00",
+                time:        "7:30 - 8:00",
                 anonymous:   true,                  // anonymous reservation
                 status:      "active"
             },
@@ -163,7 +163,7 @@ async function seedDB() {
                 seat_name:   "Seat 02",
                 lab:         "Computer Lab A",
                 date:        "2026-04-02",
-                time:        "7:30 - 9:00",
+                time:        "7:30 - 8:00",
                 anonymous:   true,                  // anonymous reservation
                 status:      "active"
             },
@@ -172,7 +172,7 @@ async function seedDB() {
                 seat_name:   "Seat 10",
                 lab:         "Computer Lab A",
                 date:        "2026-04-01",
-                time:        "7:30 - 9:00",
+                time:        "7:30 - 8:00",
                 anonymous:   false,
                 status:      "active"
             }

@@ -19,12 +19,12 @@ async function getReserveDays() {
 
         days.push({
             date: fmt(d),
-            timeslot: '7:30 - 9:00',
+            timeslot: '7:30 - 8:00',
             available_seats: { A: [1,2,3,4,5,6,7,8,9], B: [10,11,12,13,14,15,16,17,18]}
         });
         days.push({
             date: fmt(d),
-            timeslot: '11:00 - 12:30',
+            timeslot: '11:00 - 11:30',
             available_seats: { A: [1,2,3,4,5,6,7,8,9], B: [10,11,12,13,14,15,16,17,18] }
         });
     }
@@ -174,6 +174,11 @@ async function loadReservationCalendar() {
                                     <div class="modal-row"><dt>Seat</dt><dd>${seatNum}</dd></div>
                                     <div class="modal-row"><dt>Member</dt><dd>${memberField}</dd></div>
                                 </dl>
+                                 <div class="modal-row">
+                                    <label>
+                                        <input type="checkbox" id="anon-${uid}"> Reserve Anonymously
+                                    </label>
+                                </div>
                                 <div class="modal-actions">
                                     <label for="${uid}" class="btn-close-modal">Cancel</label>
                                     <label for="${uid}" class="btn-confirm"
@@ -205,6 +210,9 @@ async function loadReservationCalendar() {
 
 async function handleConfirm(date, timeslot, seat, checkboxId, lab) {
     const cb = document.getElementById(checkboxId);
+    
+    const anonCheckbox = document.getElementById(`anon-${checkboxId}`); 
+    const anonymous = anonCheckbox ? anonCheckbox.checked : false;  
     if (cb) cb.checked = false;
 
     const user = getCurrentUser();
@@ -225,6 +233,7 @@ async function handleConfirm(date, timeslot, seat, checkboxId, lab) {
         timeslot,
         seat,
         lab,
+        anonymous: String(anonymous) ,
         reservedFor: targetUserName
     });
 

@@ -1,4 +1,4 @@
-async function loginUser(username, password){
+async function loginUser(username, password, rememberMe){
 
     const response = await fetch("/index", {
         method: "POST",
@@ -7,7 +7,8 @@ async function loginUser(username, password){
         },
         body: JSON.stringify({
             username: username,
-            password: password
+            password: password,
+            rememberMe: rememberMe
         })
     });
 

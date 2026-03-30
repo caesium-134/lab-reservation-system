@@ -392,7 +392,6 @@ body {
 
 #ou-box {
     display: flex;
-    
 }
 
 .other-user-box {
@@ -405,7 +404,7 @@ body {
 }
 
 .other-user-box .pd-text p{
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .other-user-box .profile-details {
@@ -482,6 +481,39 @@ body {
     height: 10%;
     margin-top: auto;
     margin-bottom: 44px;
+}
+
+.user-reservations {
+    padding: 12px 16px;
+    background: whitesmoke;
+    border-radius: 8px;
+    margin-top: 12px;
+    overflow: auto;
+}
+
+.ur-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.ur-item {
+    display: flex;
+    gap: 8px;
+    font-size: 0.85rem;
+    padding: 6px 0;
+    border-bottom: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+}
+
+.ur-item span {
+    color: #444;
+}
+
+.ur-lab { font-weight: 500; }
+
+.ur-empty {
+    font-size: 0.85rem;
+    color: #999;
 }
 
 .delete-account {
@@ -647,23 +679,25 @@ body {
     padding: 10px;
     height: 10%;
     width: 100%;
-    overflow: hidden;
+    overflow: show;
+}
+
+.other-user-box:hover{
+    background-color: rgb(243, 243, 243);
 }
 
 .ou-pfp {
     border-radius: 100%;
     object-fit: cover;
-    height: 50px;
-    width: 50px;
+    height: 38px;
+    width:43px;
     padding: 0;
     border: 1px solid;
+
 }
 
 /* reservation.html styles*/
-/*
-input[type="checkbox"],
-input[type="radio"] { display: none; }
-*/
+
 .container{
     width: 100%;
 }
