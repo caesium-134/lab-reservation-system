@@ -483,6 +483,39 @@ body {
     margin-bottom: 44px;
 }
 
+.user-reservations {
+    padding: 12px 16px;
+    background: whitesmoke;
+    border-radius: 8px;
+    margin-top: 12px;
+    overflow: auto;
+}
+
+.ur-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.ur-item {
+    display: flex;
+    gap: 8px;
+    font-size: 0.85rem;
+    padding: 6px 0;
+    border-bottom: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+}
+
+.ur-item span {
+    color: #444;
+}
+
+.ur-lab { font-weight: 500; }
+
+.ur-empty {
+    font-size: 0.85rem;
+    color: #999;
+}
+
 .delete-account {
     width: 100%;
     height: fit-content;
