@@ -2,7 +2,7 @@ let currentWeekOffset = 0;
 let selectedSlot = null;
 
 function getCurrentUser() {
-    return { id: 1, name: currentUser.name };
+    return { id: 1, name: currentUser.name, type: currentUser.type };
 }
 
 async function getReserveDays() {
@@ -76,7 +76,8 @@ function changeWeek(direction) {
 async function loadReservationCalendar() {
     const weekDates    = getWeekDates(currentWeekOffset);
     const reserveDays  = await getReserveDays();           
-    const reservations = await getReservations();           
+    const reservations = await getReservations();   
+    const user = getCurrentUser();        
 
     const weekDisplay = document.getElementById('week-display');
     const startDate = weekDates[0].toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -148,6 +149,10 @@ async function loadReservationCalendar() {
                     } else {
                         const uid = `cb-${dateStr}-${schedule.timeslot.replace(/[: ]/g,'')}-s${seatNum}`;
 
+                        const memberField = user.type === "Lab Technician"
+                        ? `<input type="text" class = "member-field" id="member-${uid}" placeholder="Enter user name">`
+                        : `<span>${user.name}</span>`;
+
                         const cb = document.createElement('input');
                         cb.type      = 'checkbox';
                         cb.id        = uid;
@@ -167,7 +172,7 @@ async function loadReservationCalendar() {
                                     <div class="modal-row"><dt>Date</dt><dd>${formattedDate}</dd></div>
                                     <div class="modal-row"><dt>Time</dt><dd>${schedule.timeslot}</dd></div>
                                     <div class="modal-row"><dt>Seat</dt><dd>${seatNum}</dd></div>
-                                    <div class="modal-row"><dt>Member</dt><dd>${getCurrentUser().name}</dd></div>
+                                    <div class="modal-row"><dt>Member</dt><dd>${memberField}</dd></div>
                                 </dl>
                                 <div class="modal-actions">
                                     <label for="${uid}" class="btn-close-modal">Cancel</label>
@@ -203,19 +208,32 @@ async function handleConfirm(date, timeslot, seat, checkboxId, lab) {
     if (cb) cb.checked = false;
 
     const user = getCurrentUser();
+
+    let targetUserName = user.name;
+
+    if(user.type === "Lab Technician"){
+        const input = document.getElementById(`member-${checkboxId}`);
+        if(!input || !input.value.trim()){
+            alert("Please enter a user name.");
+            return;
+        }
+        targetUserName = input.value.trim();
+    }
+
     const result = await createReservation({
-        user_id:  user.id,
         date,
         timeslot,
         seat,
-        lab
+        lab,
+        reservedFor: targetUserName
     });
 
-    if (result.success) {
+    if(result.success){
         alert(`Reservation confirmed!\n${date}  |  ${timeslot}  |  Seat ${seat}`);
         loadReservationCalendar();
-    } else {
-        alert('Failed to create reservation. Please try again.');
+    } 
+    else{
+        alert(result.message || 'Failed to create reservation. Please try again.');
     }
 }
 

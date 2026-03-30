@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema({
     college: String,
     course: String,
     profilePic: String,
-    header: String
+    header: String,
+    type: String
 });
 
 module.exports = mongoose.model("User", userSchema);

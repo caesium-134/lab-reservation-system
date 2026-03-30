@@ -114,7 +114,8 @@
         <script>
             const currentUser = {
                 id: "{{user._id}}",
-                name: "{{user.name}}"
+                name: "{{user.name}}",
+                type: "{{user.type}}"
             };
             const availableLabs = [{{#each labs}}"{{this.name}}"{{#unless @last}},{{/unless}}{{/each}}];
 

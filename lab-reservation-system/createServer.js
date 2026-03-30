@@ -125,23 +125,41 @@ app.get("/api/reservations", isAuthenticated, async (req, res) => {
     res.json(formatted);
 });
 
-app.post("/reservation", isAuthenticated, async (req, res) => {
+app.post("/reservation", isAuthenticated, async (req, res) => {    
     try {
         const currentUser = await User.findOne({ username: req.session.user });
-        const { date, timeslot, seat, lab, anonymous } = req.body;
+        const { date, timeslot, seat, lab, anonymous, reservedFor } = req.body;
+
+        let userToUse = currentUser ;
+
+        if (currentUser.type === "Lab Technician") {
+            if (!reservedFor || reservedFor.trim() === "" || reservedFor === currentUser.name) {
+                return res.json({ success: false, message: "Please enter a valid user name." });
+            }
+
+            const foundUser = await User.findOne({
+                name: { $regex: `^${reservedFor.trim()}$`, $options: "i" }
+            }).lean();
+
+            if (!foundUser) {
+                return res.json({ success: false, message: `User "${reservedFor}" not found.` });
+            }
+            userToUse = foundUser;
+        }
 
         const newReservation = new Reservation({
-            userId:    currentUser._id,
-            seat_name: `Seat ${String(seat).padStart(2, '0')}`,
-            lab:       lab || "Computer Lab",
-            date:      date,
-            time:      timeslot,
+            userId: userToUse._id,
+            seat_name: `Seat ${String(seat).padStart(2,'0')}`,
+            lab: lab || "Computer Lab",
+            date,
+            time: timeslot,
             anonymous: anonymous === "true",
-            status:    "active"
+            status: "active"
         });
 
         await newReservation.save();
         res.json({ success: true });
+
     } catch (err) {
         console.error(err);
         res.status(500).json({ success: false, message: "Failed to save reservation." });

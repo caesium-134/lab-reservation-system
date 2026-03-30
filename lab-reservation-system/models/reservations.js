@@ -8,7 +8,7 @@ const reservationSchema = new mongoose.Schema({
     time:        String,
     anonymous:   { type: Boolean, default: false },
     requestDate: { type: Date, default: Date.now },
-    status:      { type: String, default: "active" }
+    status:      { type: String, default: "active" },
 });
 
 module.exports = mongoose.model("Reservation", reservationSchema);
