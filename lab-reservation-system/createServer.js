@@ -68,10 +68,14 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
         { $match: { username: { $ne: req.session.user } } },
         { $sample: { size: 5 } }
     ]);
+    
+    const reservations = await Reservation.find({ userId: currentUser._id }).lean();
+
     res.render("dashboard", {
         username: req.session.user,
         user: currentUser,
-        otherUsers: otherUsers
+        otherUsers: otherUsers,
+        reservations: reservations
     });
 });
 
