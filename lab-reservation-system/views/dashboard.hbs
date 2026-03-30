@@ -67,6 +67,21 @@
                         <div class="user-bio">
                             <p>{{user.bio}}</p>
                         </div>
+                        <div class="user-reservations">
+                            <p class="ur-header">My Reserved Slots</p>
+                            {{#if reservations}}
+                                {{#each reservations}}
+                                <div class="ur-item">
+                                    <span class="ur-lab">{{this.lab}}</span>
+                                    <span class="ur-date">{{this.date}}</span>
+                                    <span class="ur-time">{{this.time}}</span>
+                                    <span class="ur-seat">{{this.seat_name}}</span>
+                                </div>
+                                {{/each}}
+                            {{else}}
+                                <p class="ur-empty">No reservations yet.</p>
+                            {{/if}}
+                        </div>
                         <div class="delete-account">
                             <button type="button" class="delete-account-btn">Delete Account</button>
                         </div>
