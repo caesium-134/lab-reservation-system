@@ -77,13 +77,14 @@ async function seedDB() {
                 idNumber: "12524242",
                 name: "Clair Enotrill",
                 email: "big2026@dlsu.edu.ph",
-                bio: "What is up!!!!! I'm Clair and I'm an aspiring musician, but I'm currently taking Accounting",
+                bio: "What is up!!!!! I'm Clair and I'm an aspiring musician, but I'm currently taking Accounting and working as a Lab Technician at DLSU!",
                 schoolYear: "1st Year",
                 birthday: "2006-12-11",
                 college: "RAMON V. DEL ROSARIO COLLEGE OF BUSINESS",
                 course: "Accountancy",
                 profilePic: "https://i.pinimg.com/736x/a3/5b/d7/a35bd72c588effdaa91c603a695f0821.jpg",
-                header: "https://i.pinimg.com/1200x/7d/2a/56/7d2a5606c7b568636e87a468a2481901.jpg"
+                header: "https://i.pinimg.com/1200x/7d/2a/56/7d2a5606c7b568636e87a468a2481901.jpg",
+                type: "Lab Technician"
             },
         ]);
 

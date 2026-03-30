@@ -30,7 +30,6 @@
                 <div class="nav"><a href="dashboard">Dashboard</a></div>
                 <div class="nav"><a href="laboratories">Laboratories</a></div>
                 <div class="nav" id="dashboard-nav">Reservations</div>
-                <div class="nav"><a href="about">About</a></div>
             </div>
 
             <div class="container">
@@ -65,41 +64,10 @@
                         </select>
                     </div>
 
-                    <hr style="margin: 20px 0;">
-
-                    <h3>Search for Free Slots</h3>
-                    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
-                        <input type="date" id="search-date">
-                        <select id="search-time">
-                            <option value="">Time</option>
-                            <option value="7:30 - 8:00">7:30 - 8:00</option>
-                            <option value="11:00 - 12:30">11:00 - 11:30</option>
-                        </select>
-                        <select id="search-lab">
-                            <option value="">Lab</option>
-                            {{#each labs}}
-                            <option value="{{this.name}}">{{this.name}}</option>
-                            {{/each}}
-                        </select>
-                        <button class="btn-secondary" onclick="searchFreeSlots()">Search</button>
-                    </div>
-                    <p id="search-error" style="color:red; display:none;"></p>
-
-                    <div id="search-results" style="display:none; margin-top:16px;">
-                        <h4 id="search-results-title"></h4>
-                        <div style="display:flex; gap:32px; flex-wrap:wrap; margin-top:10px;">
-                            <div>
-                                <strong>Free Seats</strong>
-                                <div id="free-seats-list" style="margin-top:8px;"></div>
-                            </div>
-                            <div>
-                                <strong>Taken Seats</strong>
-                                <div id="taken-seats-list" style="margin-top:8px;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr style="margin: 20px 0;">
+                    <label>
+                        Reserve anonymously
+                        <input type="checkbox" id="anonymous-toggle">
+                    </label>
 
                     <div id="reservation-calendar"></div>
                 </div>
@@ -117,51 +85,6 @@
             document.getElementById("logout").addEventListener("click", function() {
                 window.location.href = "/logout";
             });
-
-            async function searchFreeSlots() {
-                const date = document.getElementById("search-date").value;
-                const time = document.getElementById("search-time").value;
-                const lab  = document.getElementById("search-lab").value;
-                const error = document.getElementById("search-error");
-                const results = document.getElementById("search-results");
-
-                error.style.display = "none";
-                results.style.display = "none";
-
-                if (!date || !time || !lab) {
-                    error.style.display = "block";
-                    error.innerText = "Please fill in all three fields before searching.";
-                    return;
-                }
-
-                try {
-                    const res = await fetch(`/search-slots?date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&lab=${encodeURIComponent(lab)}`);
-                    const data = await res.json();
-
-                    if (!data.success) {
-                        error.style.display = "block";
-                        error.innerText = data.message;
-                        return;
-                    }
-
-                    document.getElementById("search-results-title").innerText = `Results for ${data.lab} — ${data.date} at ${data.time}`;
-
-                    const freeList = document.getElementById("free-seats-list");
-                    freeList.innerHTML = data.freeSeats.length === 0
-                        ? "<em>No free seats</em>"
-                        : data.freeSeats.map(s => `<div class="seat-slot seat-available" style="display:inline-block;margin:4px;">Seat ${String(s).padStart(2,'0')}</div>`).join("");
-
-                    const takenList = document.getElementById("taken-seats-list");
-                    takenList.innerHTML = data.takenSeats.length === 0
-                        ? "<em>No taken seats</em>"
-                        : data.takenSeats.map(s => `<div class="seat-slot seat-occupied" style="display:inline-block;margin:4px;">Seat ${String(s.seat).padStart(2,'0')} — ${s.user}</div>`).join("");
-
-                    results.style.display = "block";
-                } catch (err) {
-                    error.style.display = "block";
-                    error.innerText = "Server error while searching.";
-                }
-            }
         </script>
         <script src="/js/reservations.js"></script>
     </body>

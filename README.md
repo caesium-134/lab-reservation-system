@@ -11,6 +11,15 @@ CCAPDEV MCO - Lab Reservation System
 4. Start the server: node createServer
 
 5. Open the website via: http://localhost:3000/
+
+Usernames for login:
+jvalerio
+dylanpena
+jacque
+qingsv
+clair (Lab Technician)
+
+Passwords for all users are the same: 1234
  
 
 
