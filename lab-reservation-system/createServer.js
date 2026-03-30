@@ -55,6 +55,12 @@ const User = require("./models/user");
 const Reservation = require("./models/reservations");
 const Laboratory = require("./models/laboratories");
 
+// ─── About ────────────────────────────────────────────────────────────────────
+app.get("/about", isAuthenticated, async (req, res) => {
+    const currentUser = await User.findOne({ username: req.session.user }).lean();
+    res.render("about", { user: currentUser });
+});
+
 // ─── Dashboard ────────────────────────────────────────────────────────────────
 app.get("/dashboard", isAuthenticated, async (req, res) => {
     const currentUser = await User.findOne({ username: req.session.user }).lean();
