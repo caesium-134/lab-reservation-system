@@ -392,7 +392,6 @@ body {
 
 #ou-box {
     display: flex;
-    
 }
 
 .other-user-box {
@@ -405,7 +404,7 @@ body {
 }
 
 .other-user-box .pd-text p{
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .other-user-box .profile-details {
@@ -647,23 +646,25 @@ body {
     padding: 10px;
     height: 10%;
     width: 100%;
-    overflow: hidden;
+    overflow: show;
+}
+
+.other-user-box:hover{
+    background-color: rgb(243, 243, 243);
 }
 
 .ou-pfp {
     border-radius: 100%;
     object-fit: cover;
-    height: 50px;
-    width: 50px;
+    height: 38px;
+    width:43px;
     padding: 0;
     border: 1px solid;
+
 }
 
 /* reservation.html styles*/
-/*
-input[type="checkbox"],
-input[type="radio"] { display: none; }
-*/
+
 .container{
     width: 100%;
 }
