@@ -143,14 +143,43 @@ app.post("/reservation", isAuthenticated, async (req, res) => {
 });
 
 // ─── View My Reservations ─────────────────────────────────────────────────────
-app.get("/view-reservations", isAuthenticated, async (req, res) => {
-    const currentUser = await User.findOne({ username: req.session.user });
-    const reservations = await Reservation.find({ userId: currentUser._id });
-    res.render("view-reservations", {
-        username: req.session.user,
-        user: currentUser.toObject(),
-        reservations: reservations.map(r => r.toObject())
-    });
+app.get("/view-reservations", async (req, res) => {
+    try{
+        const currentUser = await User.findOne({ username: req.session.user }).lean();
+        const targetUserId = req.query.userId;
+
+        let userIdToFetch = currentUser._id;
+
+        if(currentUser.type === "Lab Technician" && targetUserId){
+            userIdToFetch = targetUserId;
+        }
+
+        let reservations = await Reservation.find({ userId: userIdToFetch });
+
+        // attach user info
+        const userIds = reservations.map(r => r.userId);
+        const users = await User.find({ _id: { $in: userIds } });
+
+        const userMap = {};
+        users.forEach(u => {
+            userMap[u._id] = u;
+        });
+
+        reservations = reservations.map(r => ({
+            ...r.toObject(),
+            user: userMap[r.userId]
+        }));
+
+        res.render("view-reservations", {
+            reservations,
+            currentUser
+        });
+
+    } 
+    catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
 });
 
 // ─── Edit Reservation ─────────────────────────────────────────────────────────
