@@ -25,8 +25,8 @@
         <h2>Basic Information</h2>
 
         <label for="idNumber">ID Number</label>
-        <input type="text" class="edit-profile-txt" id="idNumber" name="idNumber" value="{{user.idNumber}}" readonly>
-
+        <input type="text" class="edit-profile-txt not-allowed" id="idNumber" name="idNumber" value="{{user.idNumber}}" readonly>
+        
         <label for="email">Email</label>
         <input type="email" class="edit-profile-txt" id="email" name="email" value="{{user.email}}">
 
@@ -143,6 +143,18 @@
     // On load, populate courses for the already-selected college
     document.addEventListener("DOMContentLoaded", function () {
       populateCourses(collegeSelect.value);
+    });
+
+    document.querySelector(".edit-profile-form").addEventListener("submit", function(e) {
+    const emailInput = document.getElementById("email");
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        e.preventDefault();
+        alert("Please enter a valid email address.");
+        emailInput.focus();
+        return;
+    }
     });
   </script>
 </body>
