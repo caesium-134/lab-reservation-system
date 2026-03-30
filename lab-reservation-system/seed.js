@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const User = require("./models/user");
 const Reservation = require("./models/reservations");
 const Laboratory = require("./models/laboratories");
@@ -11,10 +12,12 @@ async function seedDB() {
         await Laboratory.deleteMany({});
         await Reservation.deleteMany({});
 
+        const hashed = await bcrypt.hash("1234", 10);
+
         const users = await User.insertMany([
             {
                 username: "jvalerio",
-                password: "1234",
+                password: hashed,
                 idNumber: "12412394",
                 name: "Joaquin Valerio",
                 email: "jqvalerio@gmail.com",
@@ -28,7 +31,7 @@ async function seedDB() {
             },
             {
                 username: "dylanpena",
-                password: "1234",
+                password: hashed,
                 idNumber: "12455857",
                 name: "Dylan Penalotha",
                 email: "dylanpenalotha@gmail.com",
@@ -42,7 +45,7 @@ async function seedDB() {
             },
             {
                 username: "jacque",
-                password: "1234",
+                password: hashed,
                 idNumber: "12212586",
                 name: "Jacque Tamainta",
                 email: "jacquet@gmail.com",
@@ -56,7 +59,7 @@ async function seedDB() {
             },
             {
                 username: "qingsv",
-                password: "1234",
+                password: hashed,
                 idNumber: "12144598",
                 name: "Qings Z. Valli",
                 email: "qingsvallireal@gmail.com",
@@ -70,7 +73,7 @@ async function seedDB() {
             },
             {
                 username: "clair",
-                password: "1234",
+                password: hashed,
                 idNumber: "12524242",
                 name: "Clair Enotrill",
                 email: "big2026@gmail.com",
