@@ -33,39 +33,48 @@
                 <div class="nav"><a href="about">About</a></div>
             </div>
         
-            <div class="lab-container">
+            <div class="main-content">
                 <div class="lab-header">
-                    <h1>Laboratories</h1>
-                    <p>Browse through all the available labs.</p>
+                    <h1>Laboratories</h1> 
                 </div>
-                <div class="filter-section">
-                    <label>Filter by Availability:</label>
-                    <select id="avail-filter">
-                        <option value="all">All</option>
-                        <option value="available">Available</option>
-                        <option value="unavailable">Unavailable</option>
-                    </select>
-                </div>
-                <br> 
-                <div class="card-container-wrapper">
-                {{#each labs}}
-                <div class="card-container" data-status="{{status}}"> 
-                    <div class="card-header {{#eq status 'available'}}card-available{{/eq}}"> 
-                        <h1><a href="/reservation">{{name}}</a></h1>
-                        <h5>Room: {{room}}</h5>
-                        <h5>Capacity: {{capacity}} seats</h5>
-                        <h5>Status: {{status}}</h5>
+                <div class="lab-container">
+                    <div class="filter-section">
+                        <label>Filter by Availability:</label>
+                        <select id="avail-filter">
+                            <option value="all">All</option>
+                            <option value="available">Available</option>
+                            <option value="unavailable">Unavailable</option>
+                        </select>
+                        <label>Filter by Room: </label>
+                        <select id="room-filter">
+                            <option value="all">All</option>
+                            <option value="G">Gokongwei (G)</option>
+                            <option value="V">Velasco (V)</option>
+                        </select>
                     </div>
-                    <div class="card-description"> 
-                        <h4>{{description}}</h4>
+                    <br> 
+                    <div class="card-container-wrapper">
+                    {{#each labs}}
+                    <div class="card-container" data-status="{{status}}" data-room="{{room}}"> 
+                        <div class="card-header {{#eq status 'available'}}card-available{{/eq}}"> 
+                            <h1><a href="/reservation">{{name}}</a></h1>
+                            <h5>Room: {{room}}</h5>
+                            <h5>Capacity: {{capacity}} seats</h5>
+                            <h5>Status: {{status}}</h5>
+                        </div>
+                        <div class="card-description"> 
+                            <h4>{{description}}</h4>
+                        </div>
+                        <div style="display: flex; margin: auto; padding-left: 7.5vw">
+                            <img src="{{image}}" style="width: 5wv; height: 16vw">
+                        </div>
                     </div>
-                    <div style="display: flex; margin: auto; padding-left: 7.5vw">
-                        <img src="{{image}}" style="width: 5wv; height: 16vw">
+                    <br><br>
+                    {{/each}}
                     </div>
+
                 </div>
-                <br><br>
-                {{/each}}
-                </div>
+                
             </div>
         </div>
 
@@ -74,18 +83,24 @@
                 window.location.href = "/logout";
             });
 
-            document.getElementById("avail-filter").addEventListener("change", function() {
-                const value = this.value;
+            function applyFilters() {
+                const availValue = document.getElementById("avail-filter").value;
+                const roomValue = document.getElementById("room-filter").value;
                 const cards = document.querySelectorAll(".card-container");
+
                 cards.forEach(card => {
                     const status = card.getAttribute("data-status");
-                    if (value === "all" || status === value) {
-                        card.style.display = "";
-                    } else {
-                        card.style.display = "none";
-                    }
+                    const room = card.getAttribute("data-room");
+
+                    const availMatch = availValue === "all" || status === availValue;
+                    const roomMatch = roomValue === "all" || room.startsWith(roomValue);
+
+                    card.style.display = (availMatch && roomMatch) ? "" : "none";
                 });
-            });
+            }
+
+            document.getElementById("avail-filter").addEventListener("change", applyFilters);
+            document.getElementById("room-filter").addEventListener("change", applyFilters);
         </script>
     </body>
 </html>
