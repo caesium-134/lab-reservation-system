@@ -169,6 +169,11 @@ async function loadReservationCalendar() {
                                     <div class="modal-row"><dt>Seat</dt><dd>${seatNum}</dd></div>
                                     <div class="modal-row"><dt>Member</dt><dd>${getCurrentUser().name}</dd></div>
                                 </dl>
+                                 <div class="modal-row">
+                                    <label>
+                                        <input type="checkbox" id="anon-${uid}"> Reserve Anonymously
+                                    </label>
+                                </div>
                                 <div class="modal-actions">
                                     <label for="${uid}" class="btn-close-modal">Cancel</label>
                                     <label for="${uid}" class="btn-confirm"
@@ -200,6 +205,9 @@ async function loadReservationCalendar() {
 
 async function handleConfirm(date, timeslot, seat, checkboxId, lab) {
     const cb = document.getElementById(checkboxId);
+    
+    const anonCheckbox = document.getElementById(`anon-${checkboxId}`); 
+    const anonymous = anonCheckbox ? anonCheckbox.checked : false;  
     if (cb) cb.checked = false;
 
     const user = getCurrentUser();
@@ -208,7 +216,8 @@ async function handleConfirm(date, timeslot, seat, checkboxId, lab) {
         date,
         timeslot,
         seat,
-        lab
+        lab,
+        anonymous: String(anonymous) 
     });
 
     if (result.success) {
